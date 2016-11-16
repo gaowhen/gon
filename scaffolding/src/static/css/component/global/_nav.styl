@@ -1,0 +1,64 @@
+.g-c-nav
+  position: fixed
+  bottom: 0
+  z-index: $z-high-1
+  width: 100%
+  height: 47px
+  background-color: $gray-light
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.5)
+
+  li
+    span(1/4)
+    text-align: center
+
+    &:active
+      background-color: $gray
+
+    a
+      display: block
+      height: 47px
+      width: 100%
+      padding-top: 6px
+
+    i
+      display: block
+      font-size: 1.9rem
+      line-height: 22px
+      font-weight: 100
+
+    span
+      font-size: 1rem
+
+  .on
+    color: $blue-dark
+
+    a,
+    i
+      color: $blue-dark
+
+    .icon-boxoffice:before
+      content: "\e601"
+
+    .icon-schedule:before
+      content: "\e617"
+
+    .icon-rank:before
+      content: "\e615"
+
+    .icon-cinema:before
+      content: "\e605"
+
+    .icon-library:before
+      content: "\e60c"
+
+    .icon-mine:before
+      content: "\e610"
+
+// 票房 app 中显示「我的」
+.in-app
+  .g-c-nav
+    li
+      span(1/5)
+      text-align: center
+
+

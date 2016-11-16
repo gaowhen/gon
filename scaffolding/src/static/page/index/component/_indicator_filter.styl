@@ -1,0 +1,106 @@
+.c-filter-indicator
+  position: fixed
+  bottom: 0
+  z-index: 999
+  left: 0
+  display: none
+  height: 100vh
+  width: 100%
+  font-size: 1.3rem
+  color: $black-dark
+  .filter-bg
+    height: 100vh
+    width:100%
+    background-color: rgba(0,0,0,0.6)
+    position: absolute
+    top: 0
+    left: 0
+  .title
+    flex: 1
+    height: 44px
+    line-height: @height
+    border-bottom: 1px solid #e4e4e4
+    background: $gray
+    padding-left: 10px
+    padding-right: 10px
+    overflow: hidden
+    .close
+      float: right
+  .selectors
+    background: #fff
+    width: 100%
+    position: absolute
+    bottom: 0
+    left: 0
+    ul
+      overflow: hidden
+      padding: 10px 0
+      border-bottom: 1px solid #e4e4e4
+    li
+      float: left
+      border-radius: 30px
+      text-align: center
+      border: 1px solid #ddd
+      padding: 10px
+      height: 36px
+      vertical-align: middle
+      line-height: 16px
+      box-sizing: border-box
+      width: 28%
+      margin: 6px 2.5%
+      font-size: 1.2rem
+      color: $black
+    li.on
+      border: none
+      background: $blue-dark
+      color: #fff
+    p
+      font-size: 1rem
+      padding: 0 10px
+      height: 25px
+      line-height: @height
+      color: $black-light
+      .icon-point
+        display: inline-block
+        width: 14px
+        height: 14px
+        line-height: 1
+        font-style: normal
+        border: 1px solid #999
+        border-radius: 50%
+        color: #999
+        font-weight: bold
+        vertical-align: middle
+        margin-right: 2px
+        text-align: center
+    .filterChange
+      background: $blue-dark
+      color: #fff
+      width: 100%
+      padding: 15px
+      text-align: center
+      font-size: 1.4rem
+      display: block
+    .disabled
+      background: $gray-dark
+      color: $black-light
+
+
+.c-filter-indicator.on
+  display: block
+
+
+.c-table-guide
+  background: url("{{{img/icon/index-filter-guide.png}}}") center center
+  background-size: 100% auto
+  position: fixed
+  bottom: 0
+  left: 0
+  width: 100%
+  height: 100vh
+  z-index: 999
+  display: none
+
+
+.c-table-guide.on
+  display: block

@@ -1,0 +1,89 @@
+.soon
+  background-color: $gray-light
+  padding-top: 5px
+  clearfix()
+
+  > .hd
+    clearfix()
+    background-color: $white
+    padding: 13px 12px
+    border-bottom: 1px solid $gray-dark
+
+    h3
+      font-size: 1.4rem
+      color: $black-dark
+      line-height: 25px
+      vertical-align: middle
+
+    .filter
+      float: right
+
+      li
+        span(1/2)
+        border: 1px solid $blue-dark
+        color: $blue-dark
+        padding: 6px 4px
+        font-size: 1.1rem
+        line-height: 1
+        white-space: nowrap
+
+        &:first-of-type
+          border-top-left-radius: 5px
+          border-bottom-left-radius: 5px
+
+        &:last-of-type
+          border-top-right-radius: 5px
+          border-bottom-right-radius: 5px
+
+      .on
+        color: $white
+        background-color: $blue-dark
+
+  .item
+    background-color: $white
+
+    a
+      clearfix()
+      position: relative
+      display: block
+      width: 100%
+      padding: 10px 12px
+      border-bottom: 1px solid $gray-light
+
+      > .hd
+        column(2/12)
+
+      img
+        width: 45px
+        height: 60px
+        border-radius: 5px
+
+      > .bd
+        column(7/12)
+
+        .bd-wrap
+          align(vertical)
+          width: 57%
+
+        h3
+          font-size: 1.5rem
+          padding: 2px 0
+          font-weight: normal
+          color: $black-dark
+          @extend $ellipsis
+
+        p
+          @extend $ellipsis
+
+      > .ft
+        column(3/12)
+        text-align: right
+
+        p
+          color: $black-dark
+          align(vertical)
+          right: 12px
+
+      p
+        font-size: 1.22rem
+        line-height: 1.4

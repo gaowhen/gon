@@ -1,0 +1,10 @@
+//= include ./eruda.min.js
+//= include ./react.15.3.0.js
+//= include ./react-dom.15.3.0.js
+//= include ./echarts.min.js
+//= include ./fecha.min.js
+//= include ./reqwest.min.js
+//= include ./jweixin-1.0.0.js
+//= include ./zepto.min.js
+//= include ./react-slick.min.js
+//= include ./polyfill.min.js

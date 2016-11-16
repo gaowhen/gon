@@ -1,0 +1,21 @@
+@import '../../css/base/_global.styl'
+
+// for load more - start
+html
+body,
+#content
+  height: 100%
+
+.library-wrap
+  height: 100%
+  overflow: hidden
+
+  > .bd
+    height: 100%
+    padding-top: 44px
+    padding-bottom: 100px
+    @extend $scrollY
+// for load more - end
+
+  @import './component/_page_nav.styl'
+  @import './component/_soon.styl'

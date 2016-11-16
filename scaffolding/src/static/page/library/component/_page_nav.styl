@@ -1,0 +1,40 @@
+.page-nav
+  background-color: $white
+  padding: 17px 8px 15px 8px
+  clearfix()
+
+  li
+    column(1/3)
+
+    div
+      width: 45px
+      height: 45px
+      border-radius: 50%
+      margin: 0 auto
+      background-color: $blue-dark
+
+      i
+        display: block
+        width: 45px
+        height: 45px
+        margin: 0 auto
+        text-align: center
+        line-height: 1.8
+
+        &:before
+          color: $white
+          font-size: 2.4rem
+
+    p
+      font-size: 1.1rem
+      color: $black
+      text-align: center
+      padding-top: 8px
+
+    &:first-of-type
+      div
+        background-color: $green-dark
+
+    &:last-of-type
+      div
+        background-color: $yellow-light

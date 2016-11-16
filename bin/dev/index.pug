@@ -1,0 +1,117 @@
+doctype html
+html
+   head
+      meta(charset="utf-8")
+      title 本机反向代理设置
+      style.
+         html,
+         body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: "Hiragino Sans GB", "Helvetica Neue", Helvetica, Arial, sans-serif;
+         }
+
+         body {
+            margin: 0 auto;
+            padding: 0 30px;
+            width: 600px;
+            min-height: 100%;
+         }
+
+         ul {
+            padding: 0;
+            list-style: none;
+         }
+   script(src="./dev/jquery-2.1.3.js")
+   body
+      h2 文档
+      a(href="/doc/index", target="_blank") 查看
+      h2 本机反向代理设置
+      p 编辑 /etc/hosts 将 piaofang.wepiao.com 指向 127.0.0.1 即可使用
+      //#shortcut.mod
+      //   div.mod-hd
+      //      h3 快速设置
+      //   div.mod-bd
+      //      ul#fast-form
+      //         li
+      //            label
+      //               | 线上
+      //               input(type="button", value="使用", data-index="0")
+      //         li
+      //            label
+      //               | 83
+      //               input(type="button", value="使用", data-index="1")
+      //         li
+      //            label
+      //               | 208
+      //               input(type="button", value="使用", data-index="2")
+
+      #react.mod
+        div.mod-hd
+          h3 React 版本
+        div.mod-bd
+          ul#react-form
+            li
+              label
+                input(type="radio", name="react", value="0")
+                | 压缩版
+            li
+              label
+                input(type="radio", name="react", value="1")
+                | 开发版
+
+      #api.mod
+        div.mod-hd
+          h3 API 指向
+        div.mod-bd
+          ul#api-form
+            li
+              label
+                input(type="radio", name="api", value=data.api.pro)
+                | 线上
+            li
+              label
+                input(type="radio", name="api", value=data.api.pre)
+                | pre
+            li
+              label
+                input(type="radio", name="api", value=data.api.dev)
+                | dev
+
+      #node.mod
+         div.mod-hd
+            h3 前端指向
+         div.mod-bd
+            ul#node-form
+               li
+                  label
+                     input(type="radio", name="node", value=data.f2e.pro)
+                     | 线上
+               li
+                  label
+                     input(type="radio", name="node", value=data.f2e.pre)
+                     | pre
+               li
+                  label
+                     input(type="radio", name="node", value=data.f2e.dev)
+                     | dev
+               li
+                  label
+                     input(type="radio", name="node", value=data.f2e.dev1)
+                     | dev1
+               li
+                  label
+                     input(type="radio", name="node", value=data.f2e.dev2)
+                     | dev2
+               li
+                  label
+                     input(type="radio", name="node", value=data.f2e.dev3)
+                     | dev3
+               li
+                  label
+                     input(type="radio", name="node", value=data.f2e.local)
+                     | local
+
+      script(id="config", type="text/config") !{JSON.stringify(data, 0, 2)}
+      script(src="./dev/main.js")

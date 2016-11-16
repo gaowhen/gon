@@ -1,0 +1,10 @@
+extend ../_layout
+
+block prepend style
+  link(rel="stylesheet", href="{{{css/mine.css}}}")
+
+block prepend body
+  #content
+
+block prepend script
+  script(src="{{{js/mine.js}}}")

@@ -1,0 +1,77 @@
+$black-bg = #292929
+.c-head-new
+  color: $white
+  text-align: center
+  font-weight: 500
+  width: 100%
+
+  .head
+    position: fixed
+    top: 0
+    left: 0
+    width: 100%
+    z-index: $z-high-1
+    background-color: $black-bg
+    height: 80px
+
+    > .bd
+      width: 100%
+      padding: 10px 0
+    > .ft
+      position: absolute
+      top: 10px
+      right: 12px
+    > .hd,
+    > .bd,
+    > .ft
+      text-align: center
+      // 搜索icon
+      >.icon-search
+        font-size: 2rem
+        height: 22px
+
+  h1
+    @extend $ellipsis
+    height: 30px
+    vertical-align: middle
+    line-height: 30px
+    padding-left: 10px
+
+    .logo
+      height: 15px
+      margin-top: 12px
+      display: inline-block
+
+  // 首页切换tab
+  .index-tab
+    li
+      display: inline-block
+      padding: 0 14px
+      line-height: 2
+      font-size: 1.3rem
+      border: 1px solid #fff
+      border-left: none
+      &:last-child
+        position: relative
+        border-radius: 0 5px 5px 0
+      &:first-child
+        border-radius: 5px 0 0 5px
+        border-left: 1px solid #fff
+
+      a
+        color: $white
+
+    .on
+      background-color: #fff
+      a
+        color: #2B2E3A
+
+  // 更新小红点
+  .dot
+    position: absolute
+    top: 2px
+    right: 8px
+    display:block
+    background-color: #F1312D
+    border:2.5px solid #f1312d
+    border-radius:2.5px

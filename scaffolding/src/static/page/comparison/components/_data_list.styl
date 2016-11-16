@@ -1,0 +1,44 @@
+$first-td
+  padding-left: 10px
+  text-align: left
+
+table
+  width: 100%
+  background-color: $white
+  text-align: center
+  font-size: 1.2rem
+  color: #666
+  border-spacing: 0
+  border-collapse: collapse
+  thead
+    background-color: $gray
+    border-bottom: 1px solid $gray-dark
+    th
+      @extend $ellipsis
+      text-align: center
+      max-width: 50px
+      padding: 8px 0
+      vertical-align: middle
+      &:first-child
+        @extend $first-td
+  tbody
+    color: $black
+    tr
+      height: 58px
+      border-bottom: 1px solid $gray-light
+      vertical-align: middle
+    td
+      text-align: center
+      vertical-align: middle
+      line-height: 1.5
+
+.c-data-list
+  thead
+    th
+      &:first-child
+        @extend $first-td
+  tbody
+    td
+      &:first-child
+        @extend $first-td
+        color: $black-dark

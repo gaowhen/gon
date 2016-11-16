@@ -1,0 +1,52 @@
+@import '~nib/lib/nib/index.styl'
+@import '~jeet/styl/index.styl'
+
+// @import './_var.styl'
+
+global-reset()
+
+*
+  // android no highlight
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0)
+  box-sizing(border-box)
+
+*:before,
+*:after
+  box-sizing(border-box)
+
+ul,
+li
+  list-style: none
+
+a
+  color: $black-light
+  text-decoration: none
+  outline: none
+
+  &:visited
+    color: $black-light
+
+html
+  font-size: 66.6%
+
+  @media $small
+    // default font size is 16px, 16 * 62.5 = 10
+    font-size: 62.5%
+
+body
+  font-family: Helvetica, Tahoma, Arial, Hiragino Sans GB, "冬青黑体", "Microsoft YaHei", "微软雅黑", STXihei, "华文细黑", SimSun, "宋体", Heiti, "黑体", sans-serif
+  webkit-font-smoothing: antialiased
+  background-color: $gray
+  overflow-x: hidden
+  line-height: 1
+  color: $black
+  font-size: $h2
+
+  -webkit-user-select: none
+  -webkit-touch-callout: none
+  -webkit-font-smoothing: antialiased
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0)
+
+input
+  border: none
+  outline: none

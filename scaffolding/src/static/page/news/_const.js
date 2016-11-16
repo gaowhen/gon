@@ -1,0 +1,13 @@
+export const CATEGORY = {
+  ALL: 0,
+  INDUSTRY_REPORT: 1,
+  USER_ANALYSIS: 2,
+  SUBJECT_RESEARCH: 3,
+  HOT_FILM: 4,
+}
+
+export const CHANGE_CATEGORY = 'NEWS:CHANGE_CATEGORY'
+
+export const UPDATE_DATA = 'NEWS:UPDATE_DATA'
+
+export const LOAD_MORE = 'NEWS:LOAD_MORE'

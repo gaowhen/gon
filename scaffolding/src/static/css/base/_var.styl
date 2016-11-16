@@ -1,0 +1,78 @@
+// Color
+$white = #FFF
+
+$blue-dark = #0092FF
+$blue = #3BABFF
+$blue-light = rgba(#91DFFF, 0.4)
+$blue-black-dark = #262A37
+$blue-black = #3D475B
+
+$green-dark = #00D294
+$green = #32E49A
+$green-light = #8FF3B0
+
+$yellow-dark = #F76C00
+$yellow = #FFAA00
+$yellow-light = #FFE100
+
+$red-dark = #F1312D
+$red = #FF6562
+$red-light = #FF9D9D
+
+$orange-dark = rgba(#F76C00, 0.6)
+$orange = rgba(#F76C00, 0.4)
+$orange-light = rgba(#F76C00, 0.2)
+
+$gray-blue = #818388
+$gray-dark = #E4E4E4
+$gray = #F2F2F2
+$gray-light = #F8F8F8
+
+$black-dark = #333
+$black = #666
+$black-light = #999
+
+$base-font = $black
+$active-bg = $gray-light
+$title-font = $black-dark
+$light-font = $black-light
+$link-font = $base-font
+$main-color = $blue-dark
+
+// z-index
+// 分为 4 级，
+// 局部层级使用 normal 使用方式为 $z-normal-1
+// high 给 fixed element 用
+// higher 给 popup 类用
+// highest 给 提示 用，并且 high 这三级仅供全局组件使用
+$layer = {
+  normal: (10 20 30 40 50 60 70 80 90 100),
+  // fixed
+  high: (200 250 300 350 400),
+  // popup
+  higher: (500 600 700 800 900),
+  // tip
+  highest: (1000 2000 3000 4000 5000),
+}
+
+for key, val in $layer
+  for level, i in val
+    define('$z-' + key + '-' + (i + 1), level)
+
+// Device
+// iPhone5 及以下
+$small = 'screen and (min-device-width: 320px) and (max-device-width: 374px) '
+// iPhone6 及以上
+$medium = 'screen and (min-device-width: 375px) and (max-device-width: 765px)'
+$desktop = 'screen and (min-width: 768px)'
+
+// Typography
+// 参考 _base.styl line 34
+// 在不同尺寸下，字号会有变化
+$h1 = 1.5rem
+$h2 = 1.4rem
+$h3 = 1.2rem
+$h4 = 1.1rem
+$h5 = 0.9rem
+
+$head-height = 44px

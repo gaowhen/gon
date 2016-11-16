@@ -1,0 +1,64 @@
+{
+  "button": [
+    {
+      "name": "购票",
+      "type": "view",
+      "url": "http://wx.wepiao.com/index.html?channel=mpmovie&_wepiao_spm=njd6.k85m.0.0"
+    },
+    {
+      "name": "福利",
+      "sub_button": [
+			  {
+					"name": "本周约啥",
+					"type": "click",
+					"key": "58本周约啥-sub"
+				},
+				{
+					"name": "购优惠",
+					"type": "click",
+					"key": "58购优惠-sub"
+				},
+        {
+          "name": "商城",
+          "type": "view",
+          "url": "http://store.wepiao.com/index.php/wap/index.php?_wepiao_from=5001000142&_wepiao_spm=0wsz.uht4.0.0"
+        },
+        {
+          "name": "99元购",
+          "type": "view",
+          "url": "http://store.wepiao.com/index.php/wap/gallery.html?catId=109#Vertical&_wepiao_spm=iztl.o3x0.xte2.6xb9"
+        }
+      ]
+    },
+    {
+      "name": "服务",
+      "sub_button": [
+        {
+          "name": "查订单",
+          "type": "view",
+          "url": "http://wx.wepiao.com/movie_oz_my.html?_wepiao_spm=njd6.k85m.0.0"
+        },
+        {
+          "name": "帮助中心",
+          "type": "view",
+          "url": "http://wx.wepiao.com/faq.html"
+        },
+        {
+          "type": "click",
+          "name": "在线客服",
+          "key": "58在线客服-sub"
+        },
+        {
+          "name": "优惠码通兑",
+          "type": "view",
+          "url": "http://b.wepiao.com/excode/start.html?code=001DXV272AXvkN0jVO272PF1372DXV2q&state=1"
+        },
+        {
+          "name": "下载娱票儿app",
+          "type": "view",
+          "url": "http://promotion.wepiao.com/down/mobilelist/download.html?_wepiao_spm=0.0.rgr8.8osj"
+        }
+      ]
+    }
+  ]
+}

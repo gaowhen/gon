@@ -1,0 +1,10 @@
+extend ../_n_layout
+
+block prepend style
+  link(rel="stylesheet", href="{{{css/myfav.css}}}")
+
+block prepend body
+  #content
+
+block prepend script
+  script(src="{{{js/myfav.js}}}")

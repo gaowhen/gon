@@ -1,0 +1,88 @@
+@import './_cal_range.styl'
+
+.g-c-date-range
+  &.on
+    position: fixed
+    z-index: 100
+    top: 44px
+    .c-date
+      display: none
+
+  .c-date
+    > .bd
+      display: inline-block
+      height: 27px
+      background-color: $gray-light
+      color: #666
+      font-size: 1.2rem
+      border-radius: 5px
+      padding: 0 5px
+      vertical-align: middle
+      line-height: 27px
+      .icon-calendar
+        font-size: 1.2rem
+        color: #bbb
+      .date-range
+        margin: 0 4px
+      .date:first-child
+        &:after
+          display: inline-block
+          content: ''
+          width: 10px
+          border-bottom: 1px solid #bbb
+          height: 14px
+          line-height: 1
+          vertical-align: top
+          margin: 2px 5px 0 5px
+      .icon-arrow-down
+        display: inline-block
+        width: 10px
+        margin-right: 5px
+        &:after
+          position: static
+
+
+  .c-date-range
+    display: none
+    position: fixed
+    left: 0
+    width: 100%
+    height: 100%
+    background-color: rgba(0, 0, 0, .5)
+    z-index: 100
+    &.on
+      display: block
+    > .wrap
+      position: relative
+      background-color: $white
+      height: 450px
+      overflow: hidden
+      > .hd
+        background-color: $gray-light
+        color: $black-light
+        font-size: 1.2rem
+        padding: 0 20px
+        ul
+          display: flex
+        li
+          flex: 1
+          height: 30px
+          line-height: 30px
+          vertical-align: middle
+      > .ft
+        width: 100%
+        position: absolute
+        bottom: 0
+        .btn
+          display: block
+          border-radius: 0
+          color: $white
+          background-color: $blue-dark
+          line-height: 50px
+          height: 50px
+          margin: 0
+          padding: 0
+        .btn.disabled
+          color: $black
+          background-color: $white
+          border-top: 1px solid $gray-dark

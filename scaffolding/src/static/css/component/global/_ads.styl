@@ -1,0 +1,37 @@
+.ads-wrap
+  .slick-list
+    overflow: hidden
+    height: 75px
+    .slick-slide
+      display:inline-block
+      height: 75px
+      overflow: hidden
+      a
+        display: block
+        height: 75px
+
+  .slick-prev,
+  .slick-next
+    position: absolute
+    top: 60px
+    &:before
+      content: ""
+      position: absolute
+      display: inline-block
+      width: 6px
+      height: 6px
+      border: #b3b3b3 solid 2px
+      border-left: none
+      border-top: none
+      -webkit-transform: rotate(-45deg)
+      transform: rotate(-45deg)
+    &.slick-disabled
+      &:before
+        display: none
+  .slick-prev
+    left: 10px
+    &:before
+      -webkit-transform: rotate(135deg)
+      transform: rotate(135deg)
+  .slick-next
+    right: 10px
