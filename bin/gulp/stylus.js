@@ -1,6 +1,5 @@
 const gulp = require('gulp')
 const stylus = require('gulp-stylus')
-const config = require('config').gulp
 const sourcemaps = require('gulp-sourcemaps')
 const gulpif = require('gulp-if')
 const cssnano = require('gulp-cssnano')
@@ -8,6 +7,8 @@ const replace = require('gulp-replace')
 const jeet = require('jeet')
 const nib = require('nib')
 const autoprefixer = require('gulp-autoprefixer')
+
+const config = require('../config').asset
 
 module.exports = exports = function css() {
   return gulp.src([

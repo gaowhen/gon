@@ -1,6 +1,7 @@
 const gulp = require('gulp')
-const config = require('config').gulp
 const uglify = require('gulp-uglify')
+
+const config = require('../config').asset
 
 module.exports = exports = function uglified() {
   return gulp.src([

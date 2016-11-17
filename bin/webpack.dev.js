@@ -1,5 +1,8 @@
+const path = require('path')
 const webpack = require('webpack')
 const StringReplacePlugin = require('string-replace-webpack-plugin')
+
+const CWD = process.cwd()
 
 const config = require('./webpack.common')
 
@@ -18,7 +21,7 @@ module.exports = {
   resolve: {
     modules: [
       PATH.root,
-      'node_modules',
+      path.resolve(CWD, 'node_modules'),
     ],
   },
   module: {
@@ -27,7 +30,7 @@ module.exports = {
         test: /\.jsx?$/,
         use: [
           {
-            loader: 'react-hot-loader/webpack',
+            loader: path.join(__dirname, '../node_modules/react-hot-loader/webpack'),
           },
           {
             loader: 'babel-loader',
@@ -46,13 +49,13 @@ module.exports = {
             ],
           }),
         ],
-        exclude: /node_modules/,
+        exclude: path.resolve(CWD, 'node_modules'),
       },
       {
         test: /\.styl$/,
         use: [
           {
-            loader: 'style',
+            loader: path.join(__dirname, '../node_modules/style-loader'),
           },
           {
             loader: 'css?sourceMap',

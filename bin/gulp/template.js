@@ -1,6 +1,7 @@
 const gulp = require('gulp')
-const config = require('config').gulp
 const replace = require('gulp-replace')
+
+const config = require('../config').asset
 
 module.exports = exports = function tpl() {
   return gulp.src([

@@ -1,6 +1,7 @@
 const gulp = require('gulp')
 const replace = require('gulp-replace')
-const config = require('config').gulp
+
+const config = require('../config').asset
 
 function replaceFunc(match, p1) {
   /* eslint-disable */

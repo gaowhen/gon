@@ -6,7 +6,12 @@ const bodyParser = require('body-parser')
 require('body-parser-xml')(bodyParser)
 
 const staticPath = path.resolve(__dirname, '../static')
-const viewPath = path.resolve(__dirname, '../view')
+
+let viewPath = path.resolve(__dirname, '../view/dist/')
+
+if (process.env.NODE_ENV === 'development') {
+  viewPath = path.resolve(__dirname, '../view/build/')
+}
 
 app.use(compression({
   level: zlib.Z_BEST_COMPRESSION,

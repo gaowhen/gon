@@ -1,6 +1,7 @@
 const gulp = require('gulp')
 const rev = require('gulp-rev')
-const config = require('config').gulp
+
+const config = require('../config').asset
 
 module.exports = exports = function revision() {
   return gulp.src([

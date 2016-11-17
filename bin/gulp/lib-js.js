@@ -1,8 +1,7 @@
-/* eslint no-console: ["error", { allow: ["warn", "error"] }] */
-
 const gulp = require('gulp')
 const include = require('gulp-include')
-const config = require('config').gulp
+
+const config = require('../config').asset
 
 module.exports = exports = function libjs() {
   return gulp.src([
