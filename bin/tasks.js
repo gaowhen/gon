@@ -30,6 +30,7 @@ module.exports = {
     }
 
     cp('-R', path.resolve(__dirname, '../scaffolding'), path.resolve(CWD, appname))
+    exec(`cd ${path.resolve(CWD, appname)} && git init`)
     console.log('APP:', appname, 'is created.')
   },
   start(port) {
@@ -39,6 +40,6 @@ module.exports = {
   release() {
     isNPMInstalled()
     process.env.NODE_ENV = 'production'
-    exec(`${webpack} --config ${webpackConfig} && ${gulp} --gulpfile ${gulpfile} release`)
+    exec(`${webpack} --optimize-minimize --config ${webpackConfig} && ${gulp} --gulpfile ${gulpfile} release`)
   },
 }
