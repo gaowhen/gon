@@ -47,16 +47,9 @@ module.exports = {
     '$': false,
     'fecha': false,
     '_': false,
-    'echarts': false,
-    'reqwest': false,
-    'wx': false,
-    'WebViewJavascriptBridge': false,
-    'fixScroll': false,
-    'setCachedHTML': false,
-    'ga': false,
-    'Gon': false,
-    'Slider': false,
     'window': false,
     'document': false,
+    'exec': false,
+    'cp': false,
   }
 }
