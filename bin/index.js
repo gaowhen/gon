@@ -12,7 +12,7 @@ program
     const TASKS = ['init', 'start', 'release', 'deploy']
 
     if (TASKS.indexOf(task) === -1) {
-      console.log('gon do not know what to do with your command')
+      console.log('Gon do not know what to do with your command')
     } else {
       tasks[task](appname || program.port)
     }

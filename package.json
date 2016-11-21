@@ -1,8 +1,8 @@
 {
-  "name": "gon",
-  "version": "0.0.1",
-  "description": "",
-  "private": true,
+  "name": "Gon",
+  "version": "0.0.2",
+  "description": "yet another f2e build tool",
+  "private": false,
   "bin": {
     "gon": "bin/index.js"
   },

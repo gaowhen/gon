@@ -16,8 +16,6 @@ module.exports = {
     },
     build: {
       path: getPath('static/build'),
-      js: getPath('static/build/js'),
-      css: getPath('static/build/css'),
       img: getPath('static/build/img'),
       view: getPath('view/build/'),
     },

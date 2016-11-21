@@ -12,12 +12,12 @@ const pug = require('pug')
 
 require('shelljs/global')
 
-// const webpack = require('webpack')
-// const webpackMiddleware = require('webpack-dev-middleware')
-// const webpackHotMiddleware = require('webpack-hot-middleware')
+const webpack = require('webpack')
+const webpackMiddleware = require('webpack-dev-middleware')
+const webpackHotMiddleware = require('webpack-hot-middleware')
 
 const config = require('./config').dev
-// const webpackConfig = require('./webpack.dev')
+const webpackConfig = require('./webpack.dev')
 
 const kill = {}
 let subApp
@@ -185,30 +185,30 @@ module.exports.start = function (port) {
 
   dev.use(morgan('dev'))
 
-  // const compiler = webpack(webpackConfig)
+  const compiler = webpack(webpackConfig)
 
-  // dev.use(webpackMiddleware(compiler, {
-  //   hot: true,
-  //   watchOptions: {
-  //     aggregateTimeout: 100,
-  //     poll: true,
-  //   },
-  //   publicPath: webpackConfig.output.publicPath,
-  //   stats: {
-  //     colors: true,
-  //     exclude: ['node_modules'],
-  //     chunks: false,
-  //     errorDetails: true,
-  //     cached: true,
-  //   },
-  //   historyApiFallback: true,
-  // }))
+  dev.use(webpackMiddleware(compiler, {
+    hot: true,
+    watchOptions: {
+      aggregateTimeout: 100,
+      poll: true,
+    },
+    publicPath: webpackConfig.output.publicPath,
+    stats: {
+      colors: true,
+      exclude: ['node_modules'],
+      chunks: false,
+      errorDetails: true,
+      cached: true,
+    },
+    historyApiFallback: true,
+  }))
 
-  // dev.use(webpackHotMiddleware(compiler, {
-  //   log: console.log,
-  //   path: '/__webpack_hmr',
-  //   heartbeat: 10 * 1000
-  // }))
+  dev.use(webpackHotMiddleware(compiler, {
+    log: console.log,
+    path: '/__webpack_hmr',
+    heartbeat: 10 * 1000
+  }))
 
   dev.use((req, res, next) => {
     if (!('host' in req.headers)) {

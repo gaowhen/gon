@@ -9,5 +9,5 @@ module.exports = exports = function libjs() {
   ])
   .pipe(include())
   .on('error', console.error)
-  .pipe(gulp.dest(`${config.build.js}/lib`))
+  .pipe(gulp.dest(`${config.build.path}/lib`))
 }

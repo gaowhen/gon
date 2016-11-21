@@ -8,10 +8,10 @@ const PATH = {
   publicPath: '/static/build/',
   entries: {
     pattern: [
-      path.resolve(CWD, './src/static/**/*.js'),
-      path.resolve(CWD, './src/static/js/common.js'),
-      path.resolve(CWD, '!./src/static/**/_*.js'),
-      path.resolve(CWD, '!./src/static/js/lib/**/*.js'),
+      path.resolve(CWD, 'src/static/**/*.js'),
+      path.resolve(CWD, 'src/static/js/common.js'),
+      `!${path.resolve(CWD, 'src/static/**/_*.js')}`,
+      `!${path.resolve(CWD, 'src/static/js/lib/**/*.js')}`,
     ],
     build: path.resolve(CWD, 'static/build/'),
   },
@@ -20,7 +20,7 @@ const PATH = {
 function getEntries(config) {
   const map = {}
   const hotMiddlewareScript =
-    '../node_modules/webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000&reload=true'
+    'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000&reload=true'
 
   const fileList = glob.sync(config.pattern)
 
@@ -30,7 +30,7 @@ function getEntries(config) {
     if (process.env.NODE_ENV === 'production') {
       newPrev[name] = cur
     } else {
-      newPrev[name] = ['../node_modules/react-hot-loader/patch', hotMiddlewareScript, cur]
+      newPrev[name] = ['react-hot-loader/patch.js', hotMiddlewareScript, cur]
     }
 
     return newPrev

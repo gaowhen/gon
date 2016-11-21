@@ -1,12 +1,7 @@
 *.swp
 *.swo
-/static/**
-/view/**
 node_modules/*
 npm-debug.*
 .DS_Store
-*.css.map
-release/*
 .idea/*
-/tmp/*
-npm-debug.log.*
+*.json.gzip

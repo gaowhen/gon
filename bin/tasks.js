@@ -16,6 +16,12 @@ function isNPMInstalled() {
   }
 }
 
+const gulp = path.join(__dirname, '../node_modules/.bin/gulp')
+const gulpfile = path.join(__dirname, 'gulpfile.babel.js')
+
+const webpack = path.join(__dirname, '../node_modules/.bin/webpack')
+const webpackConfig = path.join(__dirname, 'webpack.pro.js')
+
 module.exports = {
   init(appname) {
     if (!appname || !appname.length) {
@@ -29,5 +35,10 @@ module.exports = {
   start(port) {
     isNPMInstalled()
     proxy.start(port)
+  },
+  release() {
+    isNPMInstalled()
+    process.env.NODE_ENV = 'production'
+    exec(`${webpack} --config ${webpackConfig} && ${gulp} --gulpfile ${gulpfile} release`)
   },
 }

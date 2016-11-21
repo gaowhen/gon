@@ -5,7 +5,7 @@ const config = require('../config').asset
 
 function replaceFunc(match, p1) {
   /* eslint-disable */
-  const manifest = require(global.MANIFEST)
+  const manifest = require(`${config.path}/rev-manifest.json`)
   /* eslint-disable */
 
   return global.DIST_DIR + manifest[p1]
@@ -13,8 +13,8 @@ function replaceFunc(match, p1) {
 
 function replaceStatic() {
   return gulp.src([
-    `${config.dist.path}/css/**/*.css`,
-    `${config.dist.path}/js/**/*.js`,
+    `${config.dist.path}/**/*.css`,
+    `${config.dist.path}/**/*.js`,
   ], {
     base: config.dist.path,
   })
@@ -23,9 +23,11 @@ function replaceStatic() {
 }
 
 function replaceTpl() {
-  return gulp.src(`${config.src.view}/**/*.pug`)
-    .pipe(replace(global.REGEX, replaceFunc))
-    .pipe(gulp.dest(config.dist.view))
+  return gulp.src([
+    `${config.src.view}/**/*.pug`,
+  ])
+  .pipe(replace(global.REGEX, replaceFunc))
+  .pipe(gulp.dest(config.dist.view))
 }
 
 module.exports = exports = {

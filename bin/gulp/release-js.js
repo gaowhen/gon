@@ -5,9 +5,9 @@ const config = require('../config').asset
 
 module.exports = exports = function uglified() {
   return gulp.src([
-    `${config.dist.js}/**/*.js`,
-    `!${config.dist.js}/lib/*.js`,
-    `!${config.dist.js}/**/*.min.js`,
+    `${config.build.path}/**/*.js`,
+    `!${config.build.path}/lib/*.js`,
+    `!${config.build.path}/**/*.min.js`,
   ])
   .pipe(uglify({
     output: {
@@ -17,5 +17,5 @@ module.exports = exports = function uglified() {
       drop_console: true,
     },
   }))
-  .pipe(gulp.dest(config.build.js))
+  .pipe(gulp.dest(config.build.path))
 }
