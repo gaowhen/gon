@@ -4,4 +4,4 @@ node_modules/*
 npm-debug.*
 .DS_Store
 .idea/*
-*.json.gzip
+*.gzip

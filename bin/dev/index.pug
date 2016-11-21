@@ -61,57 +61,57 @@ html
                 input(type="radio", name="react", value="1")
                 | 开发版
 
-      #api.mod
-        div.mod-hd
-          h3 API 指向
-        div.mod-bd
-          ul#api-form
-            li
-              label
-                input(type="radio", name="api", value=data.api.pro)
-                | 线上
-            li
-              label
-                input(type="radio", name="api", value=data.api.pre)
-                | pre
-            li
-              label
-                input(type="radio", name="api", value=data.api.dev)
-                | dev
+      <!-- #api.mod -->
+      <!--   div.mod-hd -->
+      <!--     h3 API 指向 -->
+      <!--   div.mod-bd -->
+      <!--     ul#api-form -->
+      <!--       li -->
+      <!--         label -->
+      <!--           input(type="radio", name="api", value=data.api.pro) -->
+      <!--           | 线上 -->
+      <!--       li -->
+      <!--         label -->
+      <!--           input(type="radio", name="api", value=data.api.pre) -->
+      <!--           | pre -->
+      <!--       li -->
+      <!--         label -->
+      <!--           input(type="radio", name="api", value=data.api.dev) -->
+      <!--           | dev -->
 
-      #node.mod
-         div.mod-hd
-            h3 前端指向
-         div.mod-bd
-            ul#node-form
-               li
-                  label
-                     input(type="radio", name="node", value=data.f2e.pro)
-                     | 线上
-               li
-                  label
-                     input(type="radio", name="node", value=data.f2e.pre)
-                     | pre
-               li
-                  label
-                     input(type="radio", name="node", value=data.f2e.dev)
-                     | dev
-               li
-                  label
-                     input(type="radio", name="node", value=data.f2e.dev1)
-                     | dev1
-               li
-                  label
-                     input(type="radio", name="node", value=data.f2e.dev2)
-                     | dev2
-               li
-                  label
-                     input(type="radio", name="node", value=data.f2e.dev3)
-                     | dev3
-               li
-                  label
-                     input(type="radio", name="node", value=data.f2e.local)
-                     | local
+      <!-- #node.mod -->
+      <!--    div.mod-hd -->
+      <!--       h3 前端指向 -->
+      <!--    div.mod-bd -->
+      <!--       ul#node-form -->
+      <!--          li -->
+      <!--             label -->
+      <!--                input(type="radio", name="node", value=data.f2e.pro) -->
+      <!--                | 线上 -->
+      <!--          li -->
+      <!--             label -->
+      <!--                input(type="radio", name="node", value=data.f2e.pre) -->
+      <!--                | pre -->
+      <!--          li -->
+      <!--             label -->
+      <!--                input(type="radio", name="node", value=data.f2e.dev) -->
+      <!--                | dev -->
+      <!--          li -->
+      <!--             label -->
+      <!--                input(type="radio", name="node", value=data.f2e.dev1) -->
+      <!--                | dev1 -->
+      <!--          li -->
+      <!--             label -->
+      <!--                input(type="radio", name="node", value=data.f2e.dev2) -->
+      <!--                | dev2 -->
+      <!--          li -->
+      <!--             label -->
+      <!--                input(type="radio", name="node", value=data.f2e.dev3) -->
+      <!--                | dev3 -->
+      <!--          li -->
+      <!--             label -->
+      <!--                input(type="radio", name="node", value=data.f2e.local) -->
+      <!--                | local -->
 
-      script(id="config", type="text/config") !{JSON.stringify(data, 0, 2)}
+      <!-- script(id="config", type="text/config") !{JSON.stringify(data, 0, 2)} -->
       script(src="./dev/main.js")

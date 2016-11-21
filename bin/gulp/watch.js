@@ -1,12 +1,13 @@
 const gulp = require('gulp')
-const config = require('config').gulp
 const del = require('del')
+
+const config = require('../config').asset
 
 const libjs = require('./lib-js')
 const img = require('./image')
 const tpl = require('./template')
 
-const empty = del.bind(null, [config.build.asset, config.build.view])
+const empty = del.bind(null, [config.build.path, config.build.view], { force: true })
 
 gulp.task('libjs', gulp.series(libjs, (done) => {
   gulp.watch(`${config.src.js}/lib/**/*.js`, libjs)

@@ -37,7 +37,7 @@ module.exports = {
     'import/no-extraneous-dependencies': 0,
     // reference https://medium.com/@paulwithap/the-most-important-eslint-rule-for-redux-applications-c10f6aeff61d
     'import/named': 2,
-    'no-console': ['error', { 'allow': ['log', 'error'] }],
+    'no-console': ['error', { 'allow': ['error'] }],
     // https://github.com/benmosher/eslint-plugin-import/issues/520
     'import/imports-first': [ 'warn', 'DISABLE-absolute-first' ],
   },

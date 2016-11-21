@@ -1,8 +1,8 @@
 const gulp = require('gulp')
-
-const config = require('config').gulp
 const eslint = require('gulp-eslint')
 const argv = require('yargs').argv
+
+const config = require('../config').asset
 
 let files = argv.file && argv.file.split(' ')
 

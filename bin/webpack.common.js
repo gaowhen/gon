@@ -1,17 +1,19 @@
 const path = require('path')
 const glob = require('globby')
 
+const CWD = process.cwd()
+
 const PATH = {
-  root: path.join(__dirname, 'src/static/'),
+  root: path.resolve(CWD, 'src/static/'),
   publicPath: '/static/build/',
   entries: {
     pattern: [
-      './src/static/**/*.js',
-      './src/static/js/common.js',
-      '!./src/static/**/_*.js',
-      '!./src/static/js/lib/**/*.js',
+      path.resolve(CWD, 'src/static/**/*.js'),
+      path.resolve(CWD, 'src/static/js/common.js'),
+      `!${path.resolve(CWD, 'src/static/**/_*.js')}`,
+      `!${path.resolve(CWD, 'src/static/js/lib/**/*.js')}`,
     ],
-    build: path.join(__dirname, 'static/build/'),
+    build: path.resolve(CWD, 'static/build/'),
   },
 }
 
@@ -28,7 +30,7 @@ function getEntries(config) {
     if (process.env.NODE_ENV === 'production') {
       newPrev[name] = cur
     } else {
-      newPrev[name] = ['react-hot-loader/patch', hotMiddlewareScript, cur]
+      newPrev[name] = ['react-hot-loader/patch.js', hotMiddlewareScript, cur]
     }
 
     return newPrev

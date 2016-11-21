@@ -1,8 +1,11 @@
+const path = require('path')
 const nodemon = require('gulp-nodemon')
 
 module.exports = exports = function serve(done) {
+  const script = path.join(`${process.env.INIT_CWD}`, 'app.js')
+
   nodemon({
-    script: 'app.js',
+    script,
     execMap: {
       js: 'node --harmony --inspect',
     },

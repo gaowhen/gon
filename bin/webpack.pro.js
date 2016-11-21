@@ -1,10 +1,13 @@
+const path = require('path')
+
 const webpack = require('webpack')
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
+// const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 const config = require('./webpack.common')
 
 const PATH = config.PATH
+const CWD = process.cwd()
 
 module.exports = {
   context: __dirname,
@@ -17,8 +20,12 @@ module.exports = {
   resolve: {
     modules: [
       PATH.root,
-      'node_modules',
+      path.resolve(CWD, 'node_modules'),
+      path.resolve(__dirname, '../node_modules'),
     ],
+  },
+  resolveLoader: {
+    modules: [path.resolve(__dirname, '../node_modules')],
   },
   module: {
     loaders: [
@@ -28,7 +35,11 @@ module.exports = {
           {
             loader: 'babel-loader',
             options: {
-              cacheDirectory: './tmp/',
+              presets: [
+                [require.resolve('babel-preset-es2015'), { modules: false }],
+                require.resolve('babel-preset-react'),
+                require.resolve('babel-preset-stage-0'),
+              ],
             },
           },
         ],
@@ -55,9 +66,9 @@ module.exports = {
         NODE_ENV: JSON.stringify('production'),
       },
     }),
-    new BundleAnalyzerPlugin({
-      analyzerMode: 'static',
-    }),
+    // new BundleAnalyzerPlugin({
+    //   analyzerMode: 'static',
+    // }),
   ],
   externals: {
     react: 'React',
