@@ -27,21 +27,22 @@ module.exports = {
       view: getPath('view/dist/'),
     },
   },
-  domain: 'piaofang.wepiao.com',
   dev: {
+    domain: 'piaofang.wepiao.com',
     fe: {
       local: '127.0.0.1:8000',
-      dev: '127.0.0.1:8000',
-      pre: '127.0.0.1:8000',
-      pro: '127.0.0.1:8000',
+      dev: '0:8000',
+      pre: '0:8000',
+      pro: '0:8000',
     },
     be: {
       dev: '127.0.0.1:8000',
-      pre: '127.0.0.1:8000',
-      pro: '127.0.0.1:8000',
+      pre: '0:8000',
+      pro: '0:8000',
     },
     f2e: '127.0.0.1:8000',
     api: '127.0.0.1:8000',
     react: '0',
   },
+  proxy: {},
 }

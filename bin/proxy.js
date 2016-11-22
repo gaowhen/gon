@@ -207,7 +207,7 @@ module.exports.start = function (port) {
   dev.use(webpackHotMiddleware(compiler, {
     log: console.log,
     path: '/__webpack_hmr',
-    heartbeat: 10 * 1000
+    heartbeat: 10 * 1000,
   }))
 
   dev.use((req, res, next) => {
@@ -216,7 +216,7 @@ module.exports.start = function (port) {
     }
 
     if (req.headers.host.match(/free\.natapp\.cc$/)) {
-      let headers = req.headers
+      const headers = req.headers
       const uri = url.parse(req.url, true)
       headers.host = 'piaofang.wepiao.com'
 
@@ -303,7 +303,7 @@ module.exports.start = function (port) {
     const tpl = path.resolve(__dirname, './dev/index.pug')
     const html = pug.renderFile(tpl, {
       pretty: true,
-      data: config.dev,
+      data: config,
     })
 
     res.write(html)
@@ -312,24 +312,25 @@ module.exports.start = function (port) {
     next()
   })
 
+  // TODO
   // dev.use('/docs', (req, res, next) => {
   // })
 
   dev.use('/f2e', (req, res) => {
-    config.dev.hostF2e = req.body.to
-    console.log(`f2e switch to ${config.dev.hostF2e}`)
+    config.f2e = req.body.to
+    console.log(`f2e switch to ${config.f2e}`)
     res.end()
   })
 
   dev.use('/react', (req, res, next) => {
-    config.dev.reactMin = req.body.to
-    console.log(`React version switch to ${config.dev.reactMin === '0' ? '压缩版' : '开发版'}`)
+    config.react= req.body.to
+    console.log(`React version switch to ${config.react === '0' ? '压缩版' : '开发版'}`)
     res.end()
   })
 
   dev.use('/api', (req, res, next) => {
-    config.dev.hostApi = req.body.to
-    console.log(`api switch to ${config.dev.hostApi}`)
+    config.api = req.body.to
+    console.log(`api switch to ${config.api}`)
     res.end()
   })
 
