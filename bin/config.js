@@ -29,6 +29,7 @@ module.exports = {
   },
   dev: {
     domain: 'piaofang.wepiao.com',
+    port: 8000,
     fe: {
       local: '127.0.0.1:8000',
       dev: '0:8000',

@@ -166,7 +166,7 @@ function proxy(req, res) {
   }
 })
 
-module.exports.start = function (port) {
+module.exports.start = function () {
   // start app.js
   if (fs.existsSync(pidfile)) {
     killps(spawn)
