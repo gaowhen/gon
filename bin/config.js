@@ -29,21 +29,24 @@ module.exports = {
   },
   dev: {
     domain: 'piaofang.wepiao.com',
+    f2e: '127.0.0.1:8000',
+    api: '127.0.0.1:80',
     port: 8000,
     fe: {
       local: '127.0.0.1:8000',
-      dev: '0:8000',
-      pre: '0:8000',
-      pro: '0:8000',
+      dev: '0:80',
+      pre: '0:80',
+      pro: '0:80',
     },
     be: {
-      dev: '127.0.0.1:8000',
-      pre: '0:8000',
-      pro: '0:8000',
+      dev: '127.0.0.1:80',
+      pre: '0:80',
+      pro: '0:80',
     },
-    f2e: '127.0.0.1:8000',
-    api: '127.0.0.1:8000',
     react: '0',
+    proxy: {
+      '/test': 'baidu.com:80:/aaa',
+      'free.natapp.cc': '/ping',
+    },
   },
-  proxy: {},
 }

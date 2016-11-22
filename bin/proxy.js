@@ -108,6 +108,21 @@ function spawn() {
   console.log('starting app.js')
 }
 
+function deputy(req, res, opts) {
+  const proxy = http.request(opts, (response) => {
+    // set response header
+    res.writeHead(response.statusCode, response.headers)
+
+    response.pipe(res, { end: true })
+  })
+
+  req.pipe(proxy, { end: true })
+
+  proxy.on('error', (err) => {
+    res.end(err.stack)
+  })
+}
+
 function proxy(req, res) {
   const hostF2e = config.f2e.split(':')
 
@@ -133,23 +148,23 @@ function proxy(req, res) {
     opts.path = req.url.replace('dev.min', 'dev')
   }
 
-  const source = `${req.method} ${req.headers.host}${req.url}`
-  const port = opts.port ? `:${opts.port}` : ''
-  const destination = `${opts.host}${port}`
-  console.log(`- proxy ${source} to ${destination}${opts.path}`)
+  // proxy request to outside
+  Object.keys(config.proxy).map((key) => {
+    if (!key.match(/^\//i)) {
+      return
+    }
 
-  const _proxy = http.request(opts, (response) => {
-    // set response header
-    res.writeHead(response.statusCode, response.headers)
+    const reg = new RegExp(`^${key.replace('/', '\/')}`, 'i')
 
-    response.pipe(res, { end: true })
+    if (pathname.match(reg)) {
+      const uri = config.proxy[key].split(':')
+      opts.host = uri[0]
+      opts.port = uri[1] ? uri[1] : 80
+      opts.path = uri[2] ? req.url.replace(key, uri[2]) : req.url
+    }
   })
 
-  req.pipe(_proxy, { end: true })
-
-  _proxy.on('error', (err) => {
-    res.end(err.stack)
-  })
+  deputy(req, res, opts)
 }
 
 ['app', 'denv'].forEach((name) => {
@@ -215,35 +230,33 @@ module.exports.start = function () {
       return res.end('no host in header')
     }
 
-    if (req.headers.host.match(/free\.natapp\.cc$/)) {
-      const headers = req.headers
-      const uri = url.parse(req.url, true)
-      headers.host = 'piaofang.wepiao.com'
-
-      const opts = {
-        host: 'piaofang.wepiao.com',
-        port: 80,
-        path: `/ping${uri.search}`,
-        method: req.method,
-        headers,
-        agent,
+    // proxy request from outside to app
+    Object.keys(config.proxy).map((key) => {
+      if (key.match(/^\//i)) {
+        return
       }
 
-      const _proxy = http.request(opts, (response) => {
-        // set response header
-        res.writeHead(response.statusCode, response.headers)
+      const reg = new RegExp(`^${key.replace(/\//g, '\/').replace(/./g, '\.')}`, 'i')
 
-        response.pipe(res, { end: true })
-      })
+      if (req.headers.host.match(reg)) {
+        const headers = req.headers
+        const uri = url.parse(req.url, true)
+        headers.host = config.domain
 
-      req.pipe(_proxy, { end: true })
+        const opts = {
+          host: config.domain,
+          port: 80,
+          path: `${config.proxy[key]}${uri.search}`,
+          method: req.method,
+          headers,
+          agent,
+        }
 
-      _proxy.on('error', (err) => {
-        res.end(err.stack)
-      })
+        deputy(req, res, opts)
 
-      return
-    }
+        return
+      }
+    })
 
     if (req.headers.host.match(/^piaofang\.wepiao\.com$/)) {
       return proxy(req, res)
@@ -270,32 +283,6 @@ module.exports.start = function () {
       })
 
       res.end(file)
-    })
-  })
-
-  dev.use('/ping', (req, res, next) => {
-    let headers = req.headers
-    headers.host = 'piaofang.wepiao.com'
-    const opts = {
-      host: 'piaofang.wepiao.com',
-      port: 80,
-      path: '/',
-      method: req.method,
-      headers,
-      agent,
-    }
-
-    const _proxy = http.request(opts, (response) => {
-      // set response header
-      res.writeHead(response.statusCode, response.headers)
-
-      response.pipe(res, { end: true })
-    })
-
-    req.pipe(_proxy, { end: true })
-
-    _proxy.on('error', (err) => {
-      res.end(err.stack)
     })
   })
 
