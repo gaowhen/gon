@@ -2,7 +2,6 @@ $(document).ready(function () {
   var $reactForm = $('#react-form')
   var $apiForm = $('#api-form')
   var $nodeForm = $('#node-form')
-  // $fastForm = $('#fast-form')
 
   var config = (function(){
     var configText = $('#config').text()
@@ -15,7 +14,8 @@ $(document).ready(function () {
     $.post('/react', {
       to: $input.val()
     }).done(function () {
-      console.log('React 版本已切换到', $input.val())
+      var version = $input.val() ? 'Pro' : 'Dev'
+      console.log('React version is switched to', version)
     })
   })
 
@@ -33,7 +33,7 @@ $(document).ready(function () {
     $.post('/api', {
       to: $input.val()
     }).done(function () {
-      console.log('api 已切换到', $input.val())
+      console.log('API is proxyed to', $input.val())
     })
   })
 
@@ -51,7 +51,7 @@ $(document).ready(function () {
     $.post('/f2e', {
       to: $input.val(),
     }).done(function () {
-      console.log('f2e 已切换到', $input.val())
+      console.log('Web is proxyed to', $input.val())
     })
   })
 

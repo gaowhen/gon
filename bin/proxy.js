@@ -251,7 +251,6 @@ module.exports.start = function () {
 
       const reg = new RegExp(`^${key.replace(/\//g, '\\/').replace(/\./g, '\\.')}`, 'i')
 
-      console.log(req.headers.host)
       // should proxy outside request directly to the real app
       // if redirecting requests to proxy again, there will be a error of
       // Can't set headers after they are sent
@@ -332,19 +331,19 @@ module.exports.start = function () {
 
   dev.use('/f2e', (req, res) => {
     config.f2e = req.body.to
-    console.log(`f2e switch to ${config.f2e}`)
+    console.log(`Web is proxyed to ${config.f2e}`)
     res.end()
   })
 
   dev.use('/react', (req, res, next) => {
     config.react= req.body.to
-    console.log(`React version switch to ${config.react === '0' ? '压缩版' : '开发版'}`)
+    console.log(`React is switched to ${config.react === '0' ? 'Dev' : 'Pro'} version`)
     res.end()
   })
 
   dev.use('/api', (req, res, next) => {
     config.api = req.body.to
-    console.log(`api switch to ${config.api}`)
+    console.log(`API is proxyed to ${config.api}`)
     res.end()
   })
 
