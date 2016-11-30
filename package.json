@@ -1,6 +1,6 @@
 {
   "name": "Gon",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "yet another f2e build tool",
   "private": false,
   "bin": {

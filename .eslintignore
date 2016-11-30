@@ -1,14 +1,5 @@
-./static/*
 .pre-commit
 .commit-msg.js
 node_modules/*
-middleware/*
-route/*
-app.js
-gulpfile.js
-dev.js
-dev/*
-src/static/js/lib/*
-src/static/js/ticketsale/_china.js
-src/static/js/util/_upload.js
-src/static/js/common/_ga.js
+bin/dev/*
+bin/proxy.js

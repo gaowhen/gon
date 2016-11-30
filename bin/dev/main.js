@@ -3,10 +3,11 @@ $(document).ready(function () {
   var $apiForm = $('#api-form')
   var $nodeForm = $('#node-form')
   // $fastForm = $('#fast-form')
+
   var config = (function(){
-      var configText = $('#config').text()
-      return JSON.parse(configText)
-    })()
+    var configText = $('#config').text()
+    return JSON.parse(configText)
+  })()
 
   $reactForm.on('click', 'input', function () {
     var $input = $(this)
@@ -21,7 +22,7 @@ $(document).ready(function () {
   $reactForm.find('input').each(function () {
     var $input = $(this)
 
-    if($input.val() === config.reactMin){
+    if($input.val() === config.react){
       $input.trigger('click')
     }
   })
@@ -39,7 +40,7 @@ $(document).ready(function () {
   $apiForm.find('input').each(function () {
     var $input = $(this)
 
-    if($input.val() === config.hostApi){
+    if($input.val() === config.api){
       $input.trigger('click')
     }
   })
@@ -57,16 +58,8 @@ $(document).ready(function () {
   $nodeForm.find('input').each(function () {
     var $input = $(this)
 
-    if($input.val() == config.hostF2e){
+    if($input.val() == config.f2e){
       $input.trigger('click')
     }
   })
-  //
-  // $fastForm.find('input').on('click', function () {
-  //   var $input = $(this),
-  //     index = $input.data('index')
-  //
-  //   $apiForm.find('input').eq(index).trigger('click')
-  //   $nodeForm.find('input').eq(index).trigger('click')
-  // })
 })

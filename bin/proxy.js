@@ -108,6 +108,28 @@ function spawn() {
   console.log('starting app.js')
 }
 
+function deputy(req, res, opts) {
+  const source = `${req.method} ${req.headers.host}${req.url}`
+  const port = opts.port ? `:${opts.port}` : ''
+  const destination = `${opts.host}${port}`
+  console.log(`- proxy ${source} to ${destination}${opts.path}`)
+
+  const _proxy = http.request(opts, (response) => {
+    // set response header
+    res.writeHead(response.statusCode, response.headers)
+
+    response.pipe(res, { end: true })
+  })
+
+  req.pipe(_proxy, { end: true })
+
+  _proxy.on('error', (err) => {
+    res.end(err.stack)
+  })
+
+  return
+}
+
 function proxy(req, res) {
   const hostF2e = config.f2e.split(':')
 
@@ -133,23 +155,27 @@ function proxy(req, res) {
     opts.path = req.url.replace('dev.min', 'dev')
   }
 
-  const source = `${req.method} ${req.headers.host}${req.url}`
-  const port = opts.port ? `:${opts.port}` : ''
-  const destination = `${opts.host}${port}`
-  console.log(`- proxy ${source} to ${destination}${opts.path}`)
+  // proxy request to outside
+  Object.keys(config.proxy).map((key) => {
+    if (!key.match(/^\//i)) {
+      return
+    }
 
-  const _proxy = http.request(opts, (response) => {
-    // set response header
-    res.writeHead(response.statusCode, response.headers)
+    const reg = new RegExp(`^${key.replace('/', '\/')}`, 'i')
 
-    response.pipe(res, { end: true })
+    if (pathname.match(reg)) {
+      const uri = config.proxy[key].split(':')
+      opts.host = uri[0]
+      opts.port = uri[1] ? uri[1] : 80
+      opts.path = uri[2] ? req.url.replace(key, uri[2]) : req.url
+      opts.headers.host = uri[0]
+      opts.headers.referer = `//${uri[0]}`
+    }
+
+    return
   })
 
-  req.pipe(_proxy, { end: true })
-
-  _proxy.on('error', (err) => {
-    res.end(err.stack)
-  })
+  deputy(req, res, opts)
 }
 
 ['app', 'denv'].forEach((name) => {
@@ -166,7 +192,7 @@ function proxy(req, res) {
   }
 })
 
-module.exports.start = function (port) {
+module.exports.start = function () {
   // start app.js
   if (fs.existsSync(pidfile)) {
     killps(spawn)
@@ -207,45 +233,59 @@ module.exports.start = function (port) {
   dev.use(webpackHotMiddleware(compiler, {
     log: console.log,
     path: '/__webpack_hmr',
-    heartbeat: 10 * 1000
+    heartbeat: 10 * 1000,
   }))
+
+  // proxy request from outside to app
+  dev.use((req, res, next) => {
+    if (!('host' in req.headers)) {
+      return res.end('no host in header')
+    }
+
+    let flag = false
+
+    Object.keys(config.proxy).map((key) => {
+      if (key.match(/^\//i)) {
+        return
+      }
+
+      const reg = new RegExp(`^${key.replace(/\//g, '\\/').replace(/\./g, '\\.')}`, 'i')
+
+      console.log(req.headers.host)
+      // should proxy outside request directly to the real app
+      // if redirecting requests to proxy again, there will be a error of
+      // Can't set headers after they are sent
+      if (req.headers.host.match(reg)) {
+        flag = true
+        const hostF2e = config.f2e.split(':')
+        const uri = url.parse(req.url, true)
+
+        const opts = {
+          host: hostF2e[0],
+          port: hostF2e[1],
+          path: `${config.proxy[key]}${uri.search}`,
+          method: req.method,
+          headers: req.headers,
+          agent,
+        }
+
+        return deputy(req, res, opts)
+      }
+    })
+
+    if (!flag) {
+      return next()
+    }
+  })
 
   dev.use((req, res, next) => {
     if (!('host' in req.headers)) {
       return res.end('no host in header')
     }
 
-    if (req.headers.host.match(/free\.natapp\.cc$/)) {
-      let headers = req.headers
-      const uri = url.parse(req.url, true)
-      headers.host = 'piaofang.wepiao.com'
+    const re = new RegExp(`^${config.domain.replace(/./g, '\.')}$`)
 
-      const opts = {
-        host: 'piaofang.wepiao.com',
-        port: 80,
-        path: `/ping${uri.search}`,
-        method: req.method,
-        headers,
-        agent,
-      }
-
-      const _proxy = http.request(opts, (response) => {
-        // set response header
-        res.writeHead(response.statusCode, response.headers)
-
-        response.pipe(res, { end: true })
-      })
-
-      req.pipe(_proxy, { end: true })
-
-      _proxy.on('error', (err) => {
-        res.end(err.stack)
-      })
-
-      return
-    }
-
-    if (req.headers.host.match(/^piaofang\.wepiao\.com$/)) {
+    if (req.headers.host.match(re)) {
       return proxy(req, res)
     }
 
@@ -273,37 +313,11 @@ module.exports.start = function (port) {
     })
   })
 
-  dev.use('/ping', (req, res, next) => {
-    let headers = req.headers
-    headers.host = 'piaofang.wepiao.com'
-    const opts = {
-      host: 'piaofang.wepiao.com',
-      port: 80,
-      path: '/',
-      method: req.method,
-      headers,
-      agent,
-    }
-
-    const _proxy = http.request(opts, (response) => {
-      // set response header
-      res.writeHead(response.statusCode, response.headers)
-
-      response.pipe(res, { end: true })
-    })
-
-    req.pipe(_proxy, { end: true })
-
-    _proxy.on('error', (err) => {
-      res.end(err.stack)
-    })
-  })
-
   dev.use('/', (req, res, next) => {
     const tpl = path.resolve(__dirname, './dev/index.pug')
     const html = pug.renderFile(tpl, {
       pretty: true,
-      data: config.dev,
+      data: config,
     })
 
     res.write(html)
@@ -312,24 +326,25 @@ module.exports.start = function (port) {
     next()
   })
 
+  // TODO
   // dev.use('/docs', (req, res, next) => {
   // })
 
   dev.use('/f2e', (req, res) => {
-    config.dev.hostF2e = req.body.to
-    console.log(`f2e switch to ${config.dev.hostF2e}`)
+    config.f2e = req.body.to
+    console.log(`f2e switch to ${config.f2e}`)
     res.end()
   })
 
   dev.use('/react', (req, res, next) => {
-    config.dev.reactMin = req.body.to
-    console.log(`React version switch to ${config.dev.reactMin === '0' ? '压缩版' : '开发版'}`)
+    config.react= req.body.to
+    console.log(`React version switch to ${config.react === '0' ? '压缩版' : '开发版'}`)
     res.end()
   })
 
   dev.use('/api', (req, res, next) => {
-    config.dev.hostApi = req.body.to
-    console.log(`api switch to ${config.dev.hostApi}`)
+    config.api = req.body.to
+    console.log(`api switch to ${config.api}`)
     res.end()
   })
 

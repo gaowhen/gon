@@ -23,7 +23,7 @@ const webpack = path.join(__dirname, '../node_modules/.bin/webpack')
 const webpackConfig = path.join(__dirname, 'webpack.pro.js')
 
 module.exports = {
-  init(appname) {
+  create(appname) {
     if (!appname || !appname.length) {
       console.log('APP name is required')
       process.exit()
@@ -33,7 +33,7 @@ module.exports = {
     exec(`cd ${path.resolve(CWD, appname)} && git init`)
     console.log('APP:', appname, 'is created.')
   },
-  start(port) {
+  dev(port) {
     isNPMInstalled()
     proxy.start(port)
   },
