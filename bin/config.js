@@ -45,8 +45,8 @@ module.exports = {
     },
     react: '0',
     proxy: {
-      '/test': 'baidu.com:80:/aaa',
-      'free.natapp.cc': '/ping',
+      '/data/sk/101010100.html': 'www.weather.com.cn:80',
+      '2pmh9.free.natapp.cc': '/ping',
     },
   },
 }

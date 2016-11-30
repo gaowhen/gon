@@ -109,18 +109,25 @@ function spawn() {
 }
 
 function deputy(req, res, opts) {
-  const proxy = http.request(opts, (response) => {
+  const source = `${req.method} ${req.headers.host}${req.url}`
+  const port = opts.port ? `:${opts.port}` : ''
+  const destination = `${opts.host}${port}`
+  console.log(`- proxy ${source} to ${destination}${opts.path}`)
+
+  const _proxy = http.request(opts, (response) => {
     // set response header
     res.writeHead(response.statusCode, response.headers)
 
     response.pipe(res, { end: true })
   })
 
-  req.pipe(proxy, { end: true })
+  req.pipe(_proxy, { end: true })
 
-  proxy.on('error', (err) => {
+  _proxy.on('error', (err) => {
     res.end(err.stack)
   })
+
+  return
 }
 
 function proxy(req, res) {
@@ -161,7 +168,11 @@ function proxy(req, res) {
       opts.host = uri[0]
       opts.port = uri[1] ? uri[1] : 80
       opts.path = uri[2] ? req.url.replace(key, uri[2]) : req.url
+      opts.headers.host = uri[0]
+      opts.headers.referer = `//${uri[0]}`
     }
+
+    return
   })
 
   deputy(req, res, opts)
@@ -225,40 +236,56 @@ module.exports.start = function () {
     heartbeat: 10 * 1000,
   }))
 
+  // proxy request from outside to app
   dev.use((req, res, next) => {
     if (!('host' in req.headers)) {
       return res.end('no host in header')
     }
 
-    // proxy request from outside to app
+    let flag = false
+
     Object.keys(config.proxy).map((key) => {
       if (key.match(/^\//i)) {
         return
       }
 
-      const reg = new RegExp(`^${key.replace(/\//g, '\/').replace(/./g, '\.')}`, 'i')
+      const reg = new RegExp(`^${key.replace(/\//g, '\\/').replace(/\./g, '\\.')}`, 'i')
 
+      console.log(req.headers.host)
+      // should proxy outside request directly to the real app
+      // if redirecting requests to proxy again, there will be a error of
+      // Can't set headers after they are sent
       if (req.headers.host.match(reg)) {
-        const headers = req.headers
+        flag = true
+        const hostF2e = config.f2e.split(':')
         const uri = url.parse(req.url, true)
-        headers.host = config.domain
 
         const opts = {
-          host: config.domain,
-          port: 80,
+          host: hostF2e[0],
+          port: hostF2e[1],
           path: `${config.proxy[key]}${uri.search}`,
           method: req.method,
-          headers,
+          headers: req.headers,
           agent,
         }
 
-        deputy(req, res, opts)
-
-        return
+        return deputy(req, res, opts)
       }
     })
 
-    if (req.headers.host.match(/^piaofang\.wepiao\.com$/)) {
+    if (!flag) {
+      return next()
+    }
+  })
+
+  dev.use((req, res, next) => {
+    if (!('host' in req.headers)) {
+      return res.end('no host in header')
+    }
+
+    const re = new RegExp(`^${config.domain.replace(/./g, '\.')}$`)
+
+    if (req.headers.host.match(re)) {
       return proxy(req, res)
     }
 
