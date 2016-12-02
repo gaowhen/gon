@@ -65,7 +65,7 @@ function spawn() {
   const gulpfile = path.join(__dirname, 'gulpfile.babel.js')
 
   subApp = exec(`${gulp} --gulpfile ${gulpfile}`, (error, stdout) => {
-    console.log(stdout)
+    // console.log(stdout)
   })
 
   pids = {
@@ -74,7 +74,7 @@ function spawn() {
   }
 
   // save pids
-  fs.writeFile(pidfile, JSON.stringify(pids), 'utf8')
+  fs.writeFile(pidfile, JSON.stringify(pids), 'utf8', () => {})
 
   SIGNAL.forEach((signal) => {
     process.removeAllListeners(signal)
@@ -87,8 +87,8 @@ function spawn() {
 
   subApp.stdout.setEncoding('utf8')
   subApp.stderr.setEncoding('utf8')
-  subApp.stdout.on('data', process.stdout.write.bind(process.stdout))
-  subApp.stderr.on('data', process.stderr.write.bind(process.stderr))
+  // subApp.stdout.on('data', process.stdout.write.bind(process.stdout))
+  // subApp.stderr.on('data', process.stderr.write.bind(process.stderr))
 
   subApp.on('exit', (code) => {
     console.log('app.js is killed')
