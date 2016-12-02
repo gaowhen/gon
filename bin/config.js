@@ -5,26 +5,26 @@ function getPath(folder) {
   return path.resolve(cwd, folder)
 }
 
-module.exports = {
+const defaultConfig = {
   asset: {
-    path: getPath('static/'),
+    path: 'static/',
     src: {
-      path: getPath('src/'),
-      js: getPath('src/static/js'),
-      img: getPath('src/static/img'),
-      view: getPath('src/template'),
+      path: 'src/',
+      js: 'src/static/js',
+      img: 'src/static/img',
+      view: 'src/template',
     },
     build: {
-      path: getPath('static/build'),
-      img: getPath('static/build/img'),
-      view: getPath('view/build/'),
+      path: 'static/build',
+      img: 'static/build/img',
+      view: 'view/build/',
     },
     dist: {
-      path: getPath('static/dist'),
-      js: getPath('static/dist/js'),
-      css: getPath('static/dist/css'),
-      img: getPath('static/dist/img'),
-      view: getPath('view/dist/'),
+      path: 'static/dist',
+      js: 'static/dist/js',
+      css: 'static/dist/css',
+      img: 'static/dist/img',
+      view: 'view/dist/',
     },
   },
   dev: {
@@ -50,3 +50,31 @@ module.exports = {
     },
   },
 }
+
+/* eslint-disable */
+const customConfig = require(`${path.resolve(process.cwd(), 'config.js')}`)
+const extended = Object.assign({}, defaultConfig, customConfig)
+const config = {
+  asset: {
+    path: getPath(extended.asset.path),
+  },
+  dev: extended.dev
+}
+
+Object.keys(extended.asset).map((key) => {
+  if (key !== 'path') {
+    Object.keys(extended.asset[key]).map((subKey) => {
+      if (!config.asset[key]) {
+        config.asset[key] = {}
+      }
+
+      config.asset[key][subKey] = getPath(extended.asset[key][subKey])
+
+      return subKey
+    })
+  }
+
+  return key
+})
+
+module.exports = config
