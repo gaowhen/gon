@@ -3,9 +3,10 @@ const webpack = require('webpack')
 const StringReplacePlugin = require('string-replace-webpack-plugin')
 
 const config = require('./webpack.common')
-const gonConfig = require('./config')
+const gonConfig = require('./config').dev
 
-const domain = gonConfig.dev.domain
+const domain = gonConfig.domain
+const externals = gonConfig.externals
 
 const PATH = config.PATH
 const CWD = process.cwd()
@@ -114,5 +115,5 @@ module.exports = {
       },
     }),
   ],
-  externals: gonConfig.dev.externals,
+  externals,
 }
