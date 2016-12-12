@@ -31,7 +31,7 @@ module.exports = {
 
     cp('-R', path.resolve(__dirname, '../scaffolding'), path.resolve(CWD, appname))
     exec(`cd ${path.resolve(CWD, appname)} && git init`)
-    console.log('APP:', appname, 'is created.')
+    console.log('Project:', appname, 'is created.')
   },
   dev(port) {
     isNPMInstalled()

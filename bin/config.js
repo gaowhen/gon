@@ -57,18 +57,24 @@ const extended = Object.assign({}, defaultConfig, customConfig)
 const config = {
   asset: {
     path: getPath(extended.asset.path),
+    origin: extended.asset.path,
   },
   dev: extended.dev
 }
 
 Object.keys(extended.asset).map((key) => {
-  if (key !== 'path') {
+  if (key !== 'path' || key !== 'origin') {
     Object.keys(extended.asset[key]).map((subKey) => {
       if (!config.asset[key]) {
         config.asset[key] = {}
       }
 
       config.asset[key][subKey] = getPath(extended.asset[key][subKey])
+
+      // webpack needs this original path
+      if (key === 'build' && subKey === 'path') {
+        config.asset[key].origin = extended.asset[key][subKey]
+      }
 
       return subKey
     })
