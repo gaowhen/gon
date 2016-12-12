@@ -6,7 +6,6 @@ const config = require('./webpack.common')
 const gonConfig = require('./config')
 
 const domain = gonConfig.dev.domain
-const buildPath = `${gonConfig.asset.origin}${gonConfig.asset.build.origin}`
 
 const PATH = config.PATH
 const CWD = process.cwd()
@@ -94,7 +93,7 @@ module.exports = {
             replacements: [
               {
                 pattern: /\{\{\{(\S*?)\}\}\}/g,
-                replacement: (match, p1) => `http://${domain}/${buildPath}/${p1}`,
+                replacement: (match, p1) => `http://${domain}/static/build/${p1}`,
               },
             ],
           }),
@@ -115,8 +114,5 @@ module.exports = {
       },
     }),
   ],
-  externals: {
-    react: 'React',
-    'react-dom': 'ReactDOM',
-  },
+  externals: gonConfig.dev.externals,
 }
