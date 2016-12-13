@@ -5,6 +5,7 @@ const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPl
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 const config = require('./webpack.common')
+const gonConfig = require('./config')
 
 const PATH = config.PATH
 const CWD = process.cwd()
@@ -70,8 +71,5 @@ module.exports = {
       analyzerMode: 'static',
     }),
   ],
-  externals: {
-    react: 'React',
-    'react-dom': 'ReactDOM',
-  },
+  externals: gonConfig.dev.externals,
 }

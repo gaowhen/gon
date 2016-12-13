@@ -3,10 +3,10 @@ const webpack = require('webpack')
 const StringReplacePlugin = require('string-replace-webpack-plugin')
 
 const config = require('./webpack.common')
-const gonConfig = require('./config')
+const gonConfig = require('./config').dev
 
-const domain = gonConfig.dev.domain
-const buildPath = `${gonConfig.asset.origin}${gonConfig.asset.build.origin}`
+const domain = gonConfig.domain
+const externals = gonConfig.externals
 
 const PATH = config.PATH
 const CWD = process.cwd()
@@ -94,7 +94,7 @@ module.exports = {
             replacements: [
               {
                 pattern: /\{\{\{(\S*?)\}\}\}/g,
-                replacement: (match, p1) => `http://${domain}/${buildPath}/${p1}`,
+                replacement: (match, p1) => `http://${domain}/static/build/${p1}`,
               },
             ],
           }),
@@ -115,8 +115,5 @@ module.exports = {
       },
     }),
   ],
-  externals: {
-    react: 'React',
-    'react-dom': 'ReactDOM',
-  },
+  externals,
 }
