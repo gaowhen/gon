@@ -12,7 +12,7 @@ const PATH = config.PATH
 const CWD = process.cwd()
 
 module.exports = {
-  devtool: '#inline-source-map',
+  devtool: '#cheap-eval-source-map',
   cache: true,
   context: __dirname,
   entry: config.getEntries(PATH.entries),
