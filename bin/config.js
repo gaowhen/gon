@@ -1,4 +1,5 @@
 const path = require('path')
+const fs = require('fs')
 
 function getPath(folder) {
   const cwd = process.env.INIT_CWD || process.cwd()
@@ -24,7 +25,12 @@ function getPath(folder) {
 // }
 
 /* eslint-disable */
-const custom = require(`${path.resolve(process.cwd(), 'config.js')}`)
+let custom = {}
+
+if (fs.existsSync(path.resolve(process.cwd(), 'config.js'))) {
+  custom = require(`${path.resolve(process.cwd(), 'config.js')}`)
+}
+/* eslint-enable */
 
 const config = {
   asset: {
@@ -81,7 +87,7 @@ Object.keys(config.asset).map((key) => {
   if (key === 'path') {
     config.asset[key] = getPath(config.asset[key])
 
-    return
+    return key
   }
 
   Object.keys(config.asset[key]).map((subKey) => {
