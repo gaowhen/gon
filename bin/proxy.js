@@ -17,7 +17,6 @@ const webpackMiddleware = require('webpack-dev-middleware')
 const webpackHotMiddleware = require('webpack-hot-middleware')
 
 const config = require('./config').dev
-console.log(require('./config'))
 const webpackConfig = require('./webpack.dev')
 
 const kill = {}
