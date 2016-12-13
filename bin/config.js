@@ -55,15 +55,15 @@ const config = {
     },
   },
   dev: {
-    domain: custom.domain || 'piaofang.wepiao.com',
+    domain: custom.domain || 'gon.com',
     f2e: custom.f2e || '127.0.0.1:8000',
     api: custom.api || '127.0.0.1:80',
     port: custom.port || 8000,
     fe: {
       local: (custom.fe && custom.fe.local) || '127.0.0.1:8000',
-      dev: (custom.fe && custom.fe.dev) || '0:80',
-      pre: (custom.fe && custom.fe.pre) || '0:80',
-      pro: (custom.fe && custom.fe.pro) || '0:80',
+      dev: (custom.fe && custom.fe.dev) || '127.0.0.1:8000',
+      pre: (custom.fe && custom.fe.pre) || '127.0.0.1:8000',
+      pro: (custom.fe && custom.fe.pro) || '127.0.0.1:8000',
     },
     be: {
       dev: (custom.be && custom.be.dev) || '127.0.0.1:80',
