@@ -1,13 +1,16 @@
 module.exports = {
-  'parser': 'babel-eslint',
-  'extends': 'airbnb',
-  'env': {
+  parser: 'babel-eslint',
+  extends: 'airbnb',
+  env: {
     'browser': true,
     // https://github.com/eslint/eslint/issues/1827
     // using the node environment disables no-console
     'node': true,
   },
-  'rules': {
+  rules: {
+    'comma-dangle': ['error', {
+      functions: 'never',
+    }],
     'semi': [2, 'never'],
     'indent': ['error', 2, {'SwitchCase': 1}],
     'strict': [0],
@@ -44,8 +47,6 @@ module.exports = {
   'globals': {
     'React': false,
     'ReactDOM': false,
-    '$': false,
-    'fecha': false,
     '_': false,
     'window': false,
     'document': false,
