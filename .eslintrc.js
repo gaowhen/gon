@@ -8,9 +8,6 @@ module.exports = {
     'node': true,
   },
   rules: {
-    'comma-dangle': ['error', {
-      functions: 'never',
-    }],
     'semi': [2, 'never'],
     'indent': ['error', 2, {'SwitchCase': 1}],
     'strict': [0],
