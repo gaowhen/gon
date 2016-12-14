@@ -8,8 +8,20 @@ module.exports = exports = function serve(done) {
 
   nodemon({
     script,
+    restartable: 'rs',
     execMap: {
       js: 'node --harmony --inspect',
+    },
+    ignore: [
+      '.git',
+      'node_modules/**/node_modules',
+      'static',
+      'src',
+      'view',
+    ],
+    watch: [`${process.env.INIT_CWD}`],
+    events: {
+      restart: "osascript -e 'display notification \"App restarted due to:\n'$FILENAME'\" with title \"nodemon\"'",
     },
     env: {
       NODE_ENV: 'development',
