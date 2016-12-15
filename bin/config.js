@@ -27,7 +27,9 @@ function getPath(folder) {
 /* eslint-disable */
 let custom = {}
 
-if (fs.existsSync(path.resolve(process.cwd(), 'config.js'))) {
+if (fs.existsSync(path.resolve(process.cwd(), '.config.js'))) {
+  custom = require(`${path.resolve(process.cwd(), '.config.js')}`)
+} else if (fs.existsSync(path.resolve(process.cwd(), 'config.js'))) {
   custom = require(`${path.resolve(process.cwd(), 'config.js')}`)
 }
 /* eslint-enable */
