@@ -9,6 +9,7 @@ const connect = require('connect')
 const bodyParser = require('body-parser')
 const morgan = require('morgan')
 const pug = require('pug')
+const figlet = require('figlet')
 
 require('shelljs/global')
 
@@ -61,6 +62,17 @@ function killps(cb) {
 }
 
 function spawn() {
+	figlet.text('Gon', {
+		font: 'univers',
+	}, (err, data) => {
+		if (err) {
+			console.error(err)
+			return
+		}
+
+		console.log(data)
+		console.log('Okay dokey, ready to work…')
+	})
   const gulp = path.join(__dirname, '../node_modules/gulp-cli/bin/gulp.js')
   const gulpfile = path.join(__dirname, 'gulpfile.babel.js')
 
@@ -104,8 +116,6 @@ function spawn() {
   })
 
   subApp.restart = true
-
-  console.log('starting app.js')
 }
 
 function deputy(req, res, opts) {
