@@ -301,10 +301,6 @@ module.exports.start = function () {
     return next()
   })
 
-  // Using bodyParser before proxy will break the requests with JSON body
-  dev.use(bodyParser.urlencoded({ extended: false }))
-  dev.use(bodyParser.json())
-
   // static file
   dev.use(function (req, res, next) {
     if (!/dev/.test(req.url)) {
@@ -312,15 +308,22 @@ module.exports.start = function () {
     }
 
     req.setEncoding('utf8')
+    console.log(path.extname(req.url))
 
     fs.readFile(__dirname + req.url, function (err, file) {
+      const contentType = path.extname(req.url) === '.js' ? 'application/javascript' : 'text/css'
+
       res.writeHead(200, {
-        'Content-Type': 'application/javascript'
+        'Content-Type': contentType,
       })
 
       res.end(file)
     })
   })
+
+  // Using bodyParser before proxy will break the requests with JSON body
+  dev.use(bodyParser.urlencoded({ extended: false }))
+  dev.use(bodyParser.json())
 
   dev.use('/', (req, res, next) => {
     const tpl = path.resolve(__dirname, './dev/index.pug')
