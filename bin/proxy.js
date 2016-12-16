@@ -161,7 +161,7 @@ function proxy(req, res) {
     opts.path = req.url.replace('/api/', '/')
   }
 
-  if (config.react === '1' && (/lib\/base\.dev\.min\./i).test(pathname)) {
+  if (config.react === 'minified' && (/lib\/base\.dev\.min\./i).test(pathname)) {
     opts.path = req.url.replace('dev.min', 'dev')
   }
 
@@ -308,7 +308,6 @@ module.exports.start = function () {
     }
 
     req.setEncoding('utf8')
-    console.log(path.extname(req.url))
 
     fs.readFile(__dirname + req.url, function (err, file) {
       const contentType = path.extname(req.url) === '.js' ? 'application/javascript' : 'text/css'
@@ -350,7 +349,7 @@ module.exports.start = function () {
 
   dev.use('/react', (req, res, next) => {
     config.react= req.body.to
-    console.log(`React is switched to ${config.react === '0' ? 'Dev' : 'Pro'} version`)
+    console.log(`React is switched to ${config.react} version`)
     res.end()
   })
 

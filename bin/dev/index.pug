@@ -11,8 +11,8 @@ html
     title Reverse Proxy Setting
 
   body.yue
-    h3 Documents
-    a(href="/doc/index", target="_blank") View
+    <!-- h3 Documents -->
+    <!-- a(href="/doc/index", target="_blank") View -->
 
     h3 Reverse Proxy Setting
     p set #{data.domain} to 127.0.0.1 in /etc/hosts
@@ -22,14 +22,10 @@ html
         h4 React Version
       div.mod-bd
         ul#react-form
-          li
-            label
-              input(type="radio", name="react", value="0")
-              | Dev
-          li
-            label
-              input(type="radio", name="react", value="1")
-              | Pro
+          li(data-val="minified")
+            strong minified
+          li(data-val="unminified")
+            strong unminified
 
     #api.mod
       div.mod-hd
@@ -37,21 +33,21 @@ html
       div.mod-bd
         ul#api-form
           each name in Object.keys(data.be)
-            li
-              label
-                input(type="radio", name="api", value=data.be[name])
-                span= name
+            if data.be[name]
+              li(data-val=data.be[name])
+                strong= name
+                span= data.be[name]
 
-    #node.mod
+    #web.mod
       div.mod-hd
         h4 Web
       div.mod-bd
-        ul#node-form
+        ul#web-form
           each name in Object.keys(data.fe)
-            li
-              label
-                input(type="radio", name="node", value=data.fe[name])
-                span= name
+            if data.fe[name]
+              li(data-val=data.fe[name])
+                strong= name
+                span= data.fe[name]
 
     script(src="./dev/jquery-2.1.3.js")
     script(id="config", type="text/config") !{JSON.stringify(data, 0, 2)}

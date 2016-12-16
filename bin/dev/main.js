@@ -1,65 +1,83 @@
 $(document).ready(function () {
   var $reactForm = $('#react-form')
   var $apiForm = $('#api-form')
-  var $nodeForm = $('#node-form')
+  var $webForm = $('#web-form')
 
   var config = (function(){
     var configText = $('#config').text()
     return JSON.parse(configText)
   })()
 
-  $reactForm.on('click', 'input', function () {
-    var $input = $(this)
+  $reactForm.on('click', 'li', function () {
+    var $this = $(this)
+    var val = $this.data('val')
 
     $.post('/react', {
-      to: $input.val()
+      to: val
     }).done(function () {
-      var version = $input.val() ? 'Pro' : 'Dev'
+      var version = val ? 'unimified' : 'minified'
+      $this
+        .addClass('active')
+        .siblings()
+          .removeClass('active')
       console.log('React version is switched to', version)
     })
   })
 
-  $reactForm.find('input').each(function () {
-    var $input = $(this)
+  $reactForm.find('li').each(function () {
+    var $this = $(this)
+    var val = $this.data('val')
 
-    if($input.val() === config.react){
-      $input.trigger('click')
+    if(val === config.react){
+      $this.trigger('click')
     }
   })
 
-  $apiForm.on('click', 'input', function () {
-    var $input = $(this)
+  $apiForm.on('click', 'li', function () {
+    var $this = $(this)
+    var val = $this.data('val')
 
     $.post('/api', {
-      to: $input.val()
+      to: val,
     }).done(function () {
-      console.log('API is proxyed to', $input.val())
+      $this
+        .addClass('active')
+        .siblings()
+          .removeClass('active')
+      console.log('API is proxyed to', val)
     })
   })
 
-  $apiForm.find('input').each(function () {
-    var $input = $(this)
+  $apiForm.find('li').each(function () {
+    var $this = $(this)
+    var val = $this.data('val')
 
-    if($input.val() === config.api){
-      $input.trigger('click')
+    if(val === config.api){
+      $this.trigger('click')
     }
   })
 
-  $nodeForm.on('click', 'input', function () {
-    var $input = $(this)
+  $webForm.on('click', 'li', function () {
+    var $this = $(this)
+    var val = $this.data('val')
 
     $.post('/f2e', {
-      to: $input.val(),
+      to: val,
     }).done(function () {
-      console.log('Web is proxyed to', $input.val())
+      $this
+        .addClass('active')
+        .siblings()
+          .removeClass('active')
+      console.log('Web is proxyed to', val)
     })
   })
 
-  $nodeForm.find('input').each(function () {
-    var $input = $(this)
+  $webForm.find('li').each(function () {
+    var $this = $(this)
+    var val = $this.data('val')
 
-    if($input.val() == config.f2e){
-      $input.trigger('click')
+    if(val === config.f2e){
+      $this.trigger('click')
     }
   })
 })

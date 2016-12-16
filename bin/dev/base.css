@@ -9,7 +9,7 @@ body {
 body {
   margin: 0 auto;
   padding: 0 30px;
-  width: 600px;
+  width: 900px;
   min-height: 100%;
 }
 
@@ -185,11 +185,13 @@ body {
 }
 
 .yue ul {
-  list-style-type: square;
+  list-style: none;
+  /* list-style-type: square; */
 }
 
 .yue ol {
-  list-style-type: decimal;
+  list-style: none;
+  /* list-style-type: decimal; */
 }
 
 .yue li {
@@ -307,4 +309,29 @@ body {
   .yue blockquote blockquote {
     margin-left: 0;
   }
+}
+
+.mod-bd li {
+  cursor: pointer;
+  display: inline-block;
+  padding: 5px 10px;
+  margin: 0 10px 10px 0;
+  border-radius: 2px;
+  border: 1px solid #353535;
+  text-align: center;
+  color: #353535;
+}
+
+.mod-bd strong {
+  display: block;
+  color: #353535;
+}
+
+.mod-bd li.active {
+  border: 1px solid #1aad19;
+  color: #1aad19;
+}
+
+.mod-bd li.active strong {
+  color: #1aad19;
 }
