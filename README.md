@@ -2,13 +2,13 @@
 
 Not meer another f2e build tool.
 
-![Gon](./doc/logo.png)
+![Gon](https://github.com/gaowhen/gaowhen.github.io/blob/master/static/img/gon/logo.png?raw=true)
 
 ### Convention
 
 #### Folder Structure
 
-![Folder structure](./doc/folder.png)
+![Folder structure](https://github.com/gaowhen/gaowhen.github.io/blob/master/static/img/gon/folder.png?raw=true)
 
 #### File Name
 
@@ -70,4 +70,4 @@ module.exports = {
 
 You can switch all these proxy setting on  [http://localhost/](http://localhost/).
 
-![proxy setting](./doc/proxy.png)
+![proxy setting](https://github.com/gaowhen/gaowhen.github.io/blob/master/static/img/gon/proxy.png?raw=true)
