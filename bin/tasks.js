@@ -33,9 +33,9 @@ module.exports = {
     exec(`cd ${path.resolve(CWD, appname)} && git init`)
     console.log('Project:', appname, 'is created.')
   },
-  dev(port) {
+  dev() {
     isNPMInstalled()
-    proxy.start(port)
+    proxy.start()
   },
   release() {
     isNPMInstalled()
