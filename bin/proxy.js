@@ -2,6 +2,7 @@ const http = require('http')
 const path = require('path')
 const fs = require('fs')
 const url = require('url')
+const md = require('marked')
 
 const agent = new http.Agent({ maxSockets: 100000 })
 
@@ -309,7 +310,10 @@ module.exports.start = function () {
 
     req.setEncoding('utf8')
 
-    fs.readFile(__dirname + req.url, function (err, file) {
+    fs.readFile(`${__dirname}${req.url}`, function (err, file) {
+      if (err) {
+        throw err
+      }
       const contentType = path.extname(req.url) === '.js' ? 'application/javascript' : 'text/css'
 
       res.writeHead(200, {
@@ -325,6 +329,10 @@ module.exports.start = function () {
   dev.use(bodyParser.json())
 
   dev.use('/', (req, res, next) => {
+    if (req.url !== '/') {
+      return next()
+    }
+
     const tpl = path.resolve(__dirname, './dev/index.pug')
     const html = pug.renderFile(tpl, {
       pretty: true,
@@ -333,13 +341,30 @@ module.exports.start = function () {
 
     res.write(html)
     res.end()
-
-    next()
   })
 
-  // TODO
-  // dev.use('/docs', (req, res, next) => {
-  // })
+  dev.use('/doc', (req, res, next) => {
+    fs.readFile(`${process.cwd()}/doc${req.url}.md`, 'utf8', (err, data) => {
+      if (err) {
+        throw err
+      }
+
+      res.writeHead(200, {
+        'Content-Type': 'text/html; charset=utf-8',
+      })
+
+      md(data.toString(), (err, content) => {
+        if (err) {
+          throw err
+        }
+
+				const compileFunc = pug.compileFile(`${__dirname}/dev/markdown.pug`)
+				const html = compileFunc({ content })
+
+        res.end(html)
+      })
+    })
+  })
 
   dev.use('/f2e', (req, res) => {
     config.f2e = req.body.to
