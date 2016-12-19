@@ -4,17 +4,11 @@ Not meer another f2e build tool.
 
 ![Gon](https://github.com/gaowhen/gaowhen.github.io/blob/master/static/img/gon/logo.png?raw=true)
 
-### Convention
+### Installation
 
-#### Folder Structure
+`npm install -g Gon`
 
-![Folder structure](https://github.com/gaowhen/gaowhen.github.io/blob/master/static/img/gon/folder.png?raw=true)
-
-#### File Name
-
-The module file which will be imported (stylus) or required (js) to the entry file should be named start with the `_` prefix. 
-
-Command
+### Usage
 
 #### Gon create [Project's Name]
 
@@ -30,6 +24,16 @@ Should be used with `sudo`, because the proxy server runs on port `80`.
 
 Releases all the static files to the `static` folder and all template files to the `view` folder.
 
+### Convention
+
+#### Folder Structure
+
+![Folder structure](https://github.com/gaowhen/gaowhen.github.io/blob/master/static/img/gon/folder.png?raw=true)
+
+#### File Name
+
+The module file which will be imported (stylus) or required (js) to the entry file should be named start with the `_` prefix.
+
 ### Custom Config
 
 ```javascript
@@ -37,7 +41,7 @@ Releases all the static files to the `static` folder and all template files to t
 module.exports = {
   domain: 'gon.com',
   port: 8000,
-  // web server  
+  // web server
   // request to the upper domain will be proxyed to these servers
   fe: {
     local: '127.0.0.1:8000',
@@ -71,3 +75,10 @@ module.exports = {
 You can switch all these proxy setting on  [http://localhost/](http://localhost/).
 
 ![proxy setting](https://github.com/gaowhen/gaowhen.github.io/blob/master/static/img/gon/proxy.png?raw=true)
+
+
+### FAQ
+
+* Name is from (Gon Freecss)[https://en.wikipedia.org/wiki/List_of_Hunter_%C3%97_Hunter_characters#Gon_Freecss]
+
+Most thanks to Webpack2.0rc and Gulp4.
