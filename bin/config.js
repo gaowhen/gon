@@ -60,6 +60,7 @@ const config = {
     domain: custom.domain || 'gon.com',
     f2e: (custom.fe && custom.fe.local) || '127.0.0.1:8000',
     api: (custom.be && custom.be.dev) || '127.0.0.1:80',
+    react: 'minified',
     port: custom.port || 8000,
     fe: {
       local: (custom.fe && custom.fe.local) || '127.0.0.1:8000',
@@ -72,7 +73,6 @@ const config = {
       pre: (custom.be && custom.be.pre) || '',
       pro: (custom.be && custom.be.dev) || '',
     },
-    react: custom.react || 'minified',
     proxy: custom.proxy || {
       '/data/sk/101010100.html': 'www.weather.com.cn:80',
       '2pmh9.free.natapp.cc': '/ping',
