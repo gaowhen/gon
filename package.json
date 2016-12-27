@@ -1,9 +1,20 @@
 {
   "name": "Gon",
-  "version": "0.10.3",
+  "version": "0.10.4",
   "description": "Not meer another f2e build tool",
   "private": false,
   "keywords": ["build tool", "f2e", "webpack", "gulp", "proxy"],
+  "author": {
+    "name": "Miko Gao",
+    "url": "https://twitter.com/gaowhen"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gaowhen/gon"
+  },
+  "bugs": {
+    "url": "https://github.com/gaowhen/gon/issues"
+  },
   "bin": {
     "gon": "bin/index.js"
   },
