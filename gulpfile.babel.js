@@ -1,3 +1,5 @@
+'use strict'
+
 const gulp = require('gulp')
 const eslint = require('gulp-eslint')
 const argv = require('yargs').argv
@@ -12,5 +14,5 @@ gulp.task('eslint', () =>
   gulp.src(files)
     .pipe(eslint())
     .pipe(eslint.format())
-    .pipe(eslint.failAfterError())
+    .pipe(eslint.failAfterError()),
 )
