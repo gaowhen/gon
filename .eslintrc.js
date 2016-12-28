@@ -42,9 +42,6 @@ module.exports = {
     'import/imports-first': [ 'warn', 'DISABLE-absolute-first' ],
   },
   'globals': {
-    'React': false,
-    'ReactDOM': false,
-    '_': false,
     'window': false,
     'document': false,
     'exec': false,
