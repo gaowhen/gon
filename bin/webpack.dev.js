@@ -116,4 +116,7 @@ module.exports = {
     }),
   ],
   externals,
+  performance: {
+    hints: false,
+  },
 }
