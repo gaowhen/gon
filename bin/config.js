@@ -8,31 +8,13 @@ function getPath(folder) {
   return path.resolve(cwd, folder)
 }
 
-// function extend(obj, ...args) {
-//   const target = Object.assign({}, obj)
-
-//   ;[].forEach.call([].slice.call(args, 0), (source) => {
-//     if (source) {
-//       Object.keys(source).map((prop) => {
-//         if ({}.hasOwnProperty.call(source, prop)) {
-//           target[prop] = source[prop]
-//         }
-
-//         return prop
-//       })
-//     }
-//   })
-
-//   return target
-// }
-
 /* eslint-disable */
 let custom = {}
 
-if (fs.existsSync(path.resolve(process.cwd(), '.config.js'))) {
-  custom = require(`${path.resolve(process.cwd(), '.config.js')}`)
-} else if (fs.existsSync(path.resolve(process.cwd(), 'config.js'))) {
-  custom = require(`${path.resolve(process.cwd(), 'config.js')}`)
+if (fs.existsSync(path.resolve(process.cwd(), '.gon.config.js'))) {
+  custom = require(`${path.resolve(process.cwd(), '.gon.config.js')}`)
+} else if (fs.existsSync(path.resolve(process.cwd(), 'gon.config.js'))) {
+  custom = require(`${path.resolve(process.cwd(), 'gon.config.js')}`)
 }
 /* eslint-enable */
 
