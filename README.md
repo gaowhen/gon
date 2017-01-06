@@ -37,7 +37,7 @@ The module file which will be imported (stylus) or required (js) to the entry fi
 ### Custom Config
 
 ```javascript
-// config.js
+// gon.config.js
 module.exports = {
   domain: 'gon.com',
   port: 8000,
