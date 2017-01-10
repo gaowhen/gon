@@ -1,6 +1,6 @@
 {
   "name": "Gon",
-  "version": "0.11.3",
+  "version": "0.11.4",
   "description": "Not meer another f2e build tool",
   "private": false,
   "keywords": [
@@ -22,7 +22,7 @@
     "url": "https://github.com/gaowhen/gon/issues"
   },
   "engines": {
-    "node": ">=5.0.0",
+    "node": ">=7.0.0",
     "npm": ">=3.3.6"
   },
   "bin": {
