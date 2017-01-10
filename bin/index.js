@@ -6,6 +6,7 @@ const tasks = require('./tasks.js')
 
 program
   .version(pkg.version)
+  .option('-v, --version', pkg.version)
   .arguments('<task> [appname]')
   .action((task, appname) => {
     const TASKS = ['create', 'dev', 'release']
