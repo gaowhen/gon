@@ -15,6 +15,8 @@ const PATH = {
     ],
     build: path.resolve(CWD, 'static/build/'),
   },
+  libDev: path.resolve(CWD, 'src/static/js/lib/lib.dev.js'),
+  libProd: path.resolve(CWD, 'src/static/js/lib/lib.js'),
 }
 
 function getEntries(config) {

@@ -232,7 +232,7 @@ module.exports.start = function () {
       aggregateTimeout: 100,
       poll: true,
     },
-    publicPath: webpackConfig.output.publicPath,
+    publicPath: webpackConfig[0].output.publicPath,
     stats: {
       colors: true,
       exclude: ['node_modules'],

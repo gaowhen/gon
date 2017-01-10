@@ -12,14 +12,18 @@
   },
   "dependencies": {
     "axios": "0.15.2",
+    "babel-polyfill": "6.20.0",
     "body-parser": "1.15.2",
     "body-parser-xml": "1.1.0",
     "classnames": "2.2.5",
     "compression": "1.6.2",
+    "eruda": "1.2.0",
     "express": "4.14.0",
     "jeet": "7.0.0",
     "nib": "1.1.2",
     "pug": "2.0.0-beta6",
+    "react": "15.4.2",
+    "react-dom": "15.4.2",
     "react-redux": "4.4.5",
     "redux": "3.6.0",
     "redux-logger": "2.7.0"
