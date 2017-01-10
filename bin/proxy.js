@@ -243,11 +243,7 @@ module.exports.start = function () {
     historyApiFallback: true,
   }))
 
-  dev.use(webpackHotMiddleware(compiler, {
-    log: console.log,
-    path: '/__webpack_hmr',
-    heartbeat: 10 * 1000,
-  }))
+  dev.use(webpackHotMiddleware(compiler))
 
   // proxy request from outside to app
   dev.use((req, res, next) => {

@@ -13,10 +13,10 @@ const CWD = process.cwd()
 module.exports = [
   {
     name: 'lib',
-    entry: PATH.lib,
+    entry: PATH.libMin,
     output: {
       path: PATH.entries.build,
-      filename: 'lib.js',
+      filename: 'lib.min.js',
       publicPath: PATH.publicPath,
     },
     plugins: [

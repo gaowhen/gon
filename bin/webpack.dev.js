@@ -14,16 +14,20 @@ const CWD = process.cwd()
 module.exports = [
   {
     name: 'lib',
-    entry: PATH.libDev,
+    entry: PATH.lib,
     output: {
       path: PATH.entries.build,
-      filename: 'lib.dev.js',
+      filename: 'lib.js',
       publicPath: PATH.publicPath,
       // hotUpdateChunkFilename: 'hot-update.js',
       // hotUpdateMainFilename: 'hot-update.json',
     },
+    performance: {
+      hints: false,
+    },
   },
   {
+    name: 'app',
     devtool: '#cheap-eval-source-map',
     cache: true,
     context: __dirname,
