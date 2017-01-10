@@ -232,7 +232,7 @@ module.exports.start = function () {
       aggregateTimeout: 100,
       poll: true,
     },
-    publicPath: webpackConfig.output.publicPath,
+    publicPath: webpackConfig[0].output.publicPath,
     stats: {
       colors: true,
       exclude: ['node_modules'],
@@ -243,11 +243,7 @@ module.exports.start = function () {
     historyApiFallback: true,
   }))
 
-  dev.use(webpackHotMiddleware(compiler, {
-    log: console.log,
-    path: '/__webpack_hmr',
-    heartbeat: 10 * 1000,
-  }))
+  dev.use(webpackHotMiddleware(compiler))
 
   // proxy request from outside to app
   dev.use((req, res, next) => {
