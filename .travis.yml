@@ -12,4 +12,4 @@ script:
   - ./bin/index.js -v
   - ./bin/index.js create demo
   - cd demo
-  - sudo ../bin/index.js dev
+  - sudo -E ../bin/index.js dev
