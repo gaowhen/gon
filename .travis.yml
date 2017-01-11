@@ -4,6 +4,7 @@ node_js:
   - 7.0.0
 install:
   - npm install
-  - npm link
 script:
-  - Gon -v
+  - ./bin/index.js -v
+  - ./bin/index.js create demo
+  - cd demo && sudo ./bin/index.js dev
