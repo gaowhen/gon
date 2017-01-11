@@ -7,4 +7,5 @@ install:
 script:
   - ./bin/index.js -v
   - ./bin/index.js create demo
-  - cd demo && sudo ./bin/index.js dev
+  - cd demo
+  - ./bin/index.js dev
