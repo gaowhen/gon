@@ -15,5 +15,4 @@ script:
   - pid=$!
   - sleep 40
   - phantomjs ../test/phantom.js
-  - sleep 5
   - kill $pid
