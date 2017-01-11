@@ -6,5 +6,4 @@ install:
   - npm install
   - npm link
 script:
-  - sudo Gon create demo
-  - cd demo && sudo Gon dev
+  - Gon -v
