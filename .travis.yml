@@ -1,4 +1,4 @@
-sudo: required
+sudo: false
 language: node_js
 node_js:
   - 7.0.0
@@ -6,10 +6,10 @@ install:
   - npm install
 cache:
   directories:
-    - .node_modules
+    - ./node_modules
 script:
   - pwd
   - ./bin/index.js -v
   - ./bin/index.js create demo
   - cd demo
-  - sudo -E ../bin/index.js dev
+  - ../bin/index.js dev 9000
