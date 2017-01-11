@@ -4,6 +4,9 @@ Not meer another f2e build tool.
 
 ![Gon](https://github.com/gaowhen/gaowhen.github.io/blob/master/static/img/gon/logo.png?raw=true)
 
+![Travis](https://travis-ci.org/gaowhen/gon.svg?branch=master)
+![Npm version](https://badge.fury.io/{{programming_language:js}}/{{Gon}}.svg)
+
 ### Installation
 
 `npm install -g Gon`
