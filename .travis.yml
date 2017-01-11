@@ -4,11 +4,11 @@ node_js:
   - 7.0.0
 install:
   - npm install
-after_install:
-  - npm link
+cache:
+  directories:
+    - .node_modules
 script:
-  - Gon -v
-  - gon -v
+  - pwd
   - ./bin/index.js -v
   - ./bin/index.js create demo
   - cd demo
