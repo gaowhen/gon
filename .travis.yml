@@ -4,8 +4,7 @@ node_js:
   - 7.0.0
 install:
   - npm install
-after_install:
-  - mkdir demo
+  - npm link
 script:
   - sudo Gon create demo
   - cd demo && sudo Gon dev
