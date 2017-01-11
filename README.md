@@ -80,6 +80,6 @@ You can switch all these proxy setting on  [http://localhost/](http://localhost/
 ### FAQ
 
 * Name is from [Gon Freecss](https://en.wikipedia.org/wiki/List_of_Hunter_%C3%97_Hunter_characters#Gon_Freecss)
-* Needs Node.js version >= 5.0.0 and npm version >= 3.3.6
+* Needs Node.js version >= 7.0.0 and npm version >= 3.3.6
 
 Most thanks to Webpack2.0rc and Gulp4.
