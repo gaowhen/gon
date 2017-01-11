@@ -13,6 +13,7 @@ script:
   - cd demo
   - ../bin/index.js dev 9000 &
   - pid=$!
-  - sleep 60
+  - sleep 40
   - phantomjs ../test/phantom.js
+  - sleep 5
   - kill $pid
