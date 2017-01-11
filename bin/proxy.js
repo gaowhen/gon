@@ -205,7 +205,7 @@ function proxy(req, res) {
   }
 })
 
-module.exports.start = function () {
+module.exports.start = function (port) {
   // start app.js
   if (fs.existsSync(pidfile)) {
     killps(spawn)
@@ -394,5 +394,5 @@ module.exports.start = function () {
     res.end('Something broke!')
   })
 
-  http.createServer(dev).listen(80)
+  http.createServer(dev).listen(port || 80)
 }
