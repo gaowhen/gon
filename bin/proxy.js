@@ -164,10 +164,6 @@ function proxy(req, res) {
     opts.path = req.url.replace('/api/', '/')
   }
 
-  if (config.react === 'minified' && (/lib\/base\.dev\.min\./i).test(pathname)) {
-    opts.path = req.url.replace('dev.min', 'dev')
-  }
-
   // proxy request to outside
   Object.keys(config.proxy).map((key) => {
     if (!key.match(/^\//i)) {
@@ -367,12 +363,6 @@ module.exports.start = function (port) {
   dev.use('/f2e', (req, res) => {
     config.f2e = req.body.to
     console.log(`Web is proxyed to ${config.f2e}`)
-    res.end()
-  })
-
-  dev.use('/react', (req, res, next) => {
-    config.react= req.body.to
-    console.log(`React is switched to ${config.react} version`)
     res.end()
   })
 
