@@ -13,3 +13,4 @@ script:
   - ./bin/index.js create demo
   - cd demo
   - ../bin/index.js dev 9000
+  - phantom ../test/phantom.js
