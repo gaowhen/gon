@@ -79,7 +79,7 @@ function spawn() {
   const gulp = path.join(__dirname, '../node_modules/gulp-cli/bin/gulp.js')
   const gulpfile = path.join(__dirname, 'gulpfile.babel.js')
 
-  subApp = exec(`${gulp} --gulpfile ${gulpfile}`, (error, stdout) => {
+  subApp = exec(`${gulp} --color --gulpfile ${gulpfile}`, (error, stdout) => {
     // console.log(stdout)
   })
 

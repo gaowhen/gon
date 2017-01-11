@@ -4,6 +4,10 @@ Not meer another f2e build tool.
 
 ![Gon](https://github.com/gaowhen/gaowhen.github.io/blob/master/static/img/gon/logo.png?raw=true)
 
+![Travis](https://travis-ci.org/gaowhen/gon.svg?branch=master)
+![Npm download](https://img.shields.io/npm/dm/Gon.svg?maxAge=2592000)
+![Npm version](https://img.shields.io/npm/v/Gon.svg?maxAge=6000)
+
 ### Installation
 
 `npm install -g Gon`
