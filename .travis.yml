@@ -8,4 +8,4 @@ script:
   - ./bin/index.js -v
   - ./bin/index.js create demo
   - cd demo
-  - ../bin/index.js dev
+  - sudo ../bin/index.js dev
