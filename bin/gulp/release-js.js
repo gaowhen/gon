@@ -6,8 +6,6 @@ const config = require('../config').asset
 module.exports = exports = function uglified() {
   return gulp.src([
     `${config.build.path}/**/*.js`,
-    `!${config.build.path}/lib/*.js`,
-    `!${config.build.path}/**/*.min.js`,
   ])
   .pipe(uglify({
     output: {

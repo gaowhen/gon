@@ -4,7 +4,6 @@ const del = require('del')
 const config = require('../config').asset
 
 const img = require('./image')
-const libjs = require('./lib-js')
 const uglified = require('./release-js')
 const revision = require('./release-rev')
 const replaceStatic = require('./release-replace').replaceStatic
@@ -17,7 +16,7 @@ function setEnv(done) {
   done()
 }
 
-const rev = gulp.series(img, libjs, uglified, revision, (done) => done())
+const rev = gulp.series(img, uglified, revision, (done) => done())
 const replace = gulp.parallel(replaceStatic, replaceTpl, (done) => done())
 const release = gulp.series(empty, setEnv, rev, replace, (done) => done())
 

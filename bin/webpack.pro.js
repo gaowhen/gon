@@ -26,6 +26,26 @@ module.exports = [
         },
       }),
     ],
+    resolve: {
+      // Tell webpack what directories should be searched when resolving modules.
+      modules: [
+        PATH.root,
+        path.resolve(CWD, 'node_modules'),
+        path.resolve(__dirname, '../node_modules'),
+      ],
+      // or webpack cannot resolve these modules
+      // These aliasing is used when trying to resolve a module
+      // alias: {
+      //   'webpack-hot-middleware/client':
+      //   path.resolve(__dirname, '../node_modules/webpack-hot-middleware/client.js'),
+      //   'react-hot-loader/patch':
+      //   path.resolve(__dirname, '../node_modules/react-hot-loader/patch.js'),
+      //   'ansi-html': path.resolve(__dirname, '../node_modules/ansi-html/'),
+      //   'html-entities': path.resolve(__dirname, '../node_modules/html-entities/'),
+      //   'react-proxy': path.resolve(__dirname, '../node_modules/react-proxy/'),
+      //   global: path.resolve(__dirname, '../node_modules/global/'),
+      // },
+    },
   },
   {
     context: __dirname,
@@ -68,10 +88,10 @@ module.exports = [
           use: [
             ExtractTextPlugin.extract(''),
             {
-              loader: 'css',
+              loader: 'css-loader',
             },
             {
-              loader: 'stylus',
+              loader: 'stylus-loader',
             },
           ],
         },
