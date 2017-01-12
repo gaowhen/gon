@@ -24,11 +24,9 @@ html
     #global-toast
       .msg
     if 'development' === env
-      script(src="{{{lib.dev.js}}}")
-      script.
-        eruda.init()
-    else
       script(src="{{{lib.js}}}")
+    else
+      script(src="{{{lib.min.js}}}")
 
     script(src="{{{common.js}}}")
     block script
