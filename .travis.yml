@@ -4,12 +4,12 @@ node_js:
   - 7.0.0
 install:
   - npm install
-after_install:
-  - pwd
-  - npm link
 cache:
   directories:
     - ./node_modules
+before_script:
+  - pwd
+  - npm link
 script:
   - gon -v
   - Gon -v
