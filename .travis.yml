@@ -4,16 +4,12 @@ node_js:
   - 7.0.0
 install:
   - npm install
+after_install:
+  - pwd
+  - npm link
 cache:
   directories:
     - ./node_modules
 script:
-  - ./bin/index.js -v
-  - ./bin/index.js create demo
-  - cd demo
-  - ../bin/index.js dev 9000 &
-  - pid=$!
-  - sleep 40
-  - phantomjs ../test/phantom.js
-  - kill $pid
-  - ../bin/index.js release
+  - gon -v
+  - Gon -v
