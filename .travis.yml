@@ -1,4 +1,4 @@
-sudo: false
+sudo: true
 language: node_js
 node_js:
   - 7.0.0
@@ -8,8 +8,15 @@ cache:
   directories:
     - ./node_modules
 before_script:
-  - pwd
   - npm link
 script:
   - gon -v
-  - Gon -v
+  - cd ..
+  - gon create demo
+  - cd demo
+  - sudo gon dev &
+  - pid=$!
+  - sleep 40
+  - phantomjs ./gon/test/phantom.js
+  - kill $pid
+  - sudo gon release
