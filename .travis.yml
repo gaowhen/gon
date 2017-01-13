@@ -13,9 +13,9 @@ script:
   - gon -v
   - gon create demo
   - cd demo
-  - gon dev &
+  - gon dev 9000 &
   - pid=$!
   - sleep 40
-  - phantomjs ./test/phantom.js
+  - phantomjs ../test/phantom.js
   - kill $pid
   - gon release
