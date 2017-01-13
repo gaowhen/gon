@@ -1,7 +1,7 @@
 const path = require('path')
 
 const webpack = require('webpack')
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
+// const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 const config = require('./webpack.common')
@@ -104,9 +104,9 @@ module.exports = [
           NODE_ENV: JSON.stringify('production'),
         },
       }),
-      new BundleAnalyzerPlugin({
-        analyzerMode: 'static',
-      }),
+      // new BundleAnalyzerPlugin({
+      //   analyzerMode: 'static',
+      // }),
     ],
     externals: gonConfig.dev.externals,
   },
