@@ -14,7 +14,7 @@ script:
   - cd ..
   - gon create demo
   - cd demo
-  - sudo gon dev &
+  - sudo -E gon dev &
   - pid=$!
   - sleep 40
   - phantomjs ./gon/test/phantom.js
