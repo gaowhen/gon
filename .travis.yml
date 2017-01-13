@@ -16,3 +16,4 @@ script:
   - sleep 40
   - phantomjs ../test/phantom.js
   - kill $pid
+  - ../bin/index.js release
