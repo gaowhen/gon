@@ -162,7 +162,7 @@ function proxy(req, res) {
     const uri = config.api.split(':')
     opts.host = uri[0]
     opts.port = uri[1] ? uri[1] : 80
-    opts.path = req.url.replace('/api/', '/')
+    // opts.path = req.url.replace('/api/', '/')
   }
 
   // proxy request to outside
