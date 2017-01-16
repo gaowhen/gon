@@ -41,6 +41,6 @@ module.exports = {
     isNPMInstalled()
     process.env.NODE_ENV = 'production'
     console.log('Releasing…')
-    exec(`${webpack} --config ${webpackConfig} --color=true --verbose=false --hide-modules=true && ${gulp} --color --gulpfile ${gulpfile} release`)
+    exec(`NODE_ENV=production ${webpack} -p --config ${webpackConfig} --color=true --verbose=false --hide-modules=true && ${gulp} --color --gulpfile ${gulpfile} release`)
   },
 }

@@ -159,8 +159,9 @@ function proxy(req, res) {
   const pathname = uri.pathname
 
   if (pathname.match(/^\/api\//i)) {
-    opts.host = config.api
-    opts.port = 80
+    const uri = config.api.spilt(':')
+    opts.host = uri[0]
+    opts.port = uri[1] ? uri[1] : 80
     opts.path = req.url.replace('/api/', '/')
   }
 
