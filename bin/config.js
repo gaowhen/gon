@@ -43,7 +43,7 @@ const config = {
   dev: {
     domain: custom.domain || 'gon.com',
     f2e: (custom.fe && custom.fe.local) || '127.0.0.1:8000',
-    api: (custom.be && custom.be.dev) || '127.0.0.1:80',
+    api: (custom.be && custom.be.dev) || '127.0.0.1:8000',
     port: custom.port || 8000,
     fe: {
       local: (custom.fe && custom.fe.local) || '127.0.0.1:8000',
@@ -52,7 +52,7 @@ const config = {
       pro: (custom.fe && custom.fe.pro) || '',
     },
     be: {
-      dev: (custom.be && custom.be.dev) || '127.0.0.1:80',
+      dev: (custom.be && custom.be.dev) || '127.0.0.1:8000',
       pre: (custom.be && custom.be.pre) || '',
       pro: (custom.be && custom.be.dev) || '',
     },
