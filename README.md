@@ -2,7 +2,7 @@
 
 Not meer another f2e build tool.
 
-![Gon](https://github.com/gaowhen/gaowhen.github.io/blob/master/static/img/gon/logo.png?raw=true)
+![Gon](https://github.com/gaowhen/gon/blob/master/doc/logo.png?raw=true)
 
 ![Travis](https://travis-ci.org/gaowhen/gon.svg?branch=master)
 ![Npm download](https://img.shields.io/npm/dm/Gon.svg?maxAge=2592000)
@@ -32,7 +32,7 @@ Releases all the static files to the `static` folder and all template files to t
 
 #### Folder Structure
 
-![Folder structure](https://github.com/gaowhen/gaowhen.github.io/blob/master/static/img/gon/folder.png?raw=true)
+![Folder structure](https://github.com/gaowhen/gon/blob/master/doc/folder.png?raw=true)
 
 #### File Name
 
@@ -78,7 +78,7 @@ module.exports = {
 
 You can switch all these proxy setting on  [http://localhost/](http://localhost/).
 
-![proxy setting](https://github.com/gaowhen/gaowhen.github.io/blob/master/static/img/gon/proxy.png?raw=true)
+![proxy setting](https://github.com/gaowhen/gon/blob/master/doc/proxy.png?raw=true)
 
 
 ### FAQ
