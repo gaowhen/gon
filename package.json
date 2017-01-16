@@ -73,7 +73,6 @@
     "gulp-if": "2.0.2",
     "gulp-include": "2.3.1",
     "gulp-nodemon": "2.2.1",
-    "gulp-postcss": "6.2.0",
     "gulp-replace": "0.5.4",
     "gulp-rev": "7.1.2",
     "gulp-sourcemaps": "2.4.0",
