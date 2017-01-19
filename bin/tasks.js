@@ -1,5 +1,6 @@
 const path = require('path')
 const fs = require('fs')
+const notifier = require('node-notifier')
 
 require('shelljs/global')
 
@@ -21,6 +22,19 @@ const gulpfile = path.join(__dirname, 'gulpfile.babel.js')
 
 const webpack = path.join(__dirname, '../node_modules/.bin/webpack')
 const webpackConfig = path.join(__dirname, 'webpack.pro.js')
+
+exec('npm view Gon version', (error, remoteVersion) => {
+  exec('npm show Gon version', (error, localVersion) => {
+    if (remoteVersion.replace(/./g, '') > localVersion.replace(/./g, '')) {
+      notifier.notify({
+        title: 'Gon',
+        message: `New version available: ${remoteVersion} `,
+        open: 'http://npmjs.com/package/Gon',
+        contentImage: path.resolve(__dirname, '../doc/logo.png'),
+      })
+    }
+  })
+})
 
 module.exports = {
   create(appname) {
