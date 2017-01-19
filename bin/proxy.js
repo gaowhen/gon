@@ -23,6 +23,8 @@ const webpackHotMiddleware = require('webpack-hot-middleware')
 const config = require('./config').dev
 const webpackConfig = require('./webpack.dev')
 
+const CWD = process.cwd()
+
 const kill = {}
 let subApp
 let pids
@@ -76,10 +78,11 @@ function spawn() {
 		console.log(data)
 		console.log('Okay dokey, ready to work…')
 	})
+
   const gulp = path.join(__dirname, '../node_modules/gulp-cli/bin/gulp.js')
   const gulpfile = path.join(__dirname, 'gulpfile.babel.js')
 
-  subApp = exec(`${gulp} --color --gulpfile ${gulpfile}`, (error, stdout) => {
+  subApp = exec(`${gulp} --color --gulpfile ${gulpfile} --cwd ${CWD}` , (error, stdout) => {
     // console.log(stdout)
   })
 
