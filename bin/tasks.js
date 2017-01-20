@@ -1,3 +1,4 @@
+const https = require('https')
 const path = require('path')
 const fs = require('fs')
 const notifier = require('node-notifier')
@@ -23,18 +24,51 @@ const gulpfile = path.join(__dirname, 'gulpfile.babel.js')
 const webpack = path.join(__dirname, '../node_modules/.bin/webpack')
 const webpackConfig = path.join(__dirname, 'webpack.pro.js')
 
-exec('npm view Gon version', (error, remoteVersion) => {
-  exec('Gon -v', (error, localVersion) => {
-    if (remoteVersion.replace(/./g, '') > localVersion.replace(/./g, '')) {
-      notifier.notify({
-        title: 'Gon',
-        message: `New version available: ${remoteVersion} `,
-        open: 'http://npmjs.com/package/Gon',
-        contentImage: path.resolve(__dirname, '../doc/logo.png'),
+https.get('https://raw.githubusercontent.com/gaowhen/gon/master/package.json', (res) => {
+  let body = ''
+
+  res.on('data', (chunk) => {
+    body += chunk
+  })
+
+  res.on('end', () => {
+    try {
+      const rv = JSON.parse(body).version
+
+      fs.readFile(path.resolve(__dirname, '../package.json'), 'utf-8', (err, pkg) => {
+        try {
+          const lv = JSON.parse(pkg).version
+
+          if (rv.replace(/\./g, '') > lv.replace(/\./g, '')) {
+            notifier.notify({
+              title: 'Gon',
+              message: `New version available: ${rv} `,
+              open: 'http://npmjs.com/package/Gon',
+              contentImage: path.resolve(__dirname, '../doc/logo.png'),
+            })
+          }
+        } catch (err) {
+          console.log(err)
+        }
       })
+    } catch (err) {
+      console.log(err)
     }
   })
 })
+
+// exec('npm view Gon version', (error, remoteVersion) => {
+//   exec('Gon -v', (error, localVersion) => {
+//     if (remoteVersion.replace(/\./g, '') > localVersion.replace(/\./g, '')) {
+//       notifier.notify({
+//         title: 'Gon',
+//         message: `New version available: ${remoteVersion} `,
+//         open: 'http://npmjs.com/package/Gon',
+//         contentImage: path.resolve(__dirname, '../doc/logo.png'),
+//       })
+//     }
+//   })
+// })
 
 module.exports = {
   create(appname) {
