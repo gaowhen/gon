@@ -24,7 +24,7 @@ const webpack = path.join(__dirname, '../node_modules/.bin/webpack')
 const webpackConfig = path.join(__dirname, 'webpack.pro.js')
 
 exec('npm view Gon version', (error, remoteVersion) => {
-  exec('npm show Gon version', (error, localVersion) => {
+  exec('Gon -v', (error, localVersion) => {
     if (remoteVersion.replace(/./g, '') > localVersion.replace(/./g, '')) {
       notifier.notify({
         title: 'Gon',
