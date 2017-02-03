@@ -3,5 +3,5 @@
 node_modules/*
 bin/dev/*
 bin/proxy.js
-scaffolding/src/static/js/lib/*.js
+scaffolding/**/*.js
 test/*.js

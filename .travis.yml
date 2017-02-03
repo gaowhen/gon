@@ -9,6 +9,7 @@ cache:
     - ./node_modules
 before_script:
   - npm link
+  - ./node_modules/.bin/gulp --gulpfile ./gulpfile.babel.js eslint
 script:
   - gon -v
   - gon create demo
