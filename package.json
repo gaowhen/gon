@@ -82,7 +82,7 @@
     "morgan": "1.7.0",
     "node-notifier": "5.0.1",
     "nodemon": "1.11.0",
-    "pug": "2.0.0-beta6",
+    "pug": "2.0.0-beta9",
     "react-hot-loader": "3.0.0-beta.6",
     "shelljs": "0.7.5",
     "string-replace-webpack-plugin": "0.0.5",
