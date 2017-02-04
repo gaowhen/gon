@@ -3,29 +3,29 @@ const del = require('del')
 
 const config = require('../config').asset
 
-// const libjs = require('./lib-js')
-const img = require('./image')
-const tpl = require('./template')
+const image = require('./image')
+const template = require('./template')
 
-const empty = del.bind(null, [config.build.path, config.build.view], { force: true })
+function empty() {
+  return del([config.build.path, config.build.view], { force: true })
+}
 
-// gulp.task('libjs', gulp.series(libjs, (done) => {
-//   gulp.watch(`${config.src.js}/lib/**/*.js`, libjs)
-//   done()
-// }))
-
-gulp.task('img', gulp.series(img, (done) => {
-  gulp.watch(`${config.src.img}/**/*.+(png|gif|jpg|eot|woff|ttf|svg|ico)`, img)
+function imgWatch(done) {
+  gulp.watch(`${config.src.img}/**/*.+(png|gif|jpg|eot|woff|ttf|svg|ico)`, image)
   done()
-}))
+}
 
-gulp.task('tpl', gulp.series(tpl, (done) => {
-  gulp.watch(`${config.src.view}/**/*.pug`, tpl)
+const img = gulp.series(image, imgWatch)
+
+function tplWatch(done) {
+  gulp.watch(`${config.src.view}/**/*.pug`, template)
   done()
-}))
+}
 
-const parallel = gulp.parallel('img', 'tpl', (done) => done())
+const tpl = gulp.series(template, tplWatch)
 
-const watch = gulp.series(empty, parallel, (done) => done())
+const parallel = gulp.parallel(img, tpl)
+
+const watch = gulp.series(empty, parallel)
 
 module.exports = exports = watch

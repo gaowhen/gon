@@ -9,15 +9,17 @@ const revision = require('./release-rev')
 const replaceStatic = require('./release-replace').replaceStatic
 const replaceTpl = require('./release-replace').replaceTpl
 
-const empty = del.bind(null, [config.dist.path, config.dist.view], { force: true })
+function empty() {
+  return del([config.dist.path, config.dist.view], { force: true })
+}
 
 function setEnv(done) {
   global.isDev = false
   done()
 }
 
-const rev = gulp.series(img, uglified, revision, (done) => done())
-const replace = gulp.parallel(replaceStatic, replaceTpl, (done) => done())
-const release = gulp.series(empty, setEnv, rev, replace, (done) => done())
+const rev = gulp.series(gulp.parallel(img, uglified), revision)
+const replace = gulp.parallel(replaceStatic, replaceTpl)
+const release = gulp.series(gulp.parallel(empty, setEnv), rev, replace)
 
 module.exports = exports = release
