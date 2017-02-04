@@ -19,8 +19,6 @@ module.exports = [
       path: PATH.entries.build,
       filename: 'lib.js',
       publicPath: PATH.publicPath,
-      // hotUpdateChunkFilename: 'hot-update.js',
-      // hotUpdateMainFilename: 'hot-update.json',
     },
     performance: {
       hints: false,
