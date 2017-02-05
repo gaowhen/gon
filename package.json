@@ -81,7 +81,7 @@
     "gulp-stylus": "2.6.0",
     "gulp-uglify": "2.0.1",
     "marked": "0.3.6",
-    "morgan": "1.7.0",
+    "morgan": "1.8.0",
     "node-notifier": "5.0.1",
     "nodemon": "1.11.0",
     "pug": "2.0.0-beta9",
