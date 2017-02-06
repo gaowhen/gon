@@ -77,7 +77,7 @@
     "gulp-nodemon": "2.2.1",
     "gulp-replace": "0.5.4",
     "gulp-rev": "7.1.2",
-    "gulp-sourcemaps": "2.4.0",
+    "gulp-sourcemaps": "2.4.1",
     "gulp-stylus": "2.6.0",
     "gulp-uglify": "2.0.1",
     "marked": "0.3.6",
