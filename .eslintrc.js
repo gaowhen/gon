@@ -31,6 +31,7 @@ module.exports = {
     // reference https://medium.com/@paulwithap/the-most-important-eslint-rule-for-redux-applications-c10f6aeff61d
     'import/named': 2,
     'no-console': ['error', { 'allow': ['log', 'error'] }],
+    'no-multi-assign': 'off',
   },
   'globals': {
     'window': false,
