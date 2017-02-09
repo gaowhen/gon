@@ -91,7 +91,7 @@
     "style-loader": "0.13.1",
     "stylus-loader": "2.4.0",
     "webpack": "2.2.1",
-    "webpack-bundle-analyzer": "2.2.1",
+    "webpack-bundle-analyzer": "2.2.3",
     "webpack-dev-middleware": "1.10.0",
     "webpack-hot-middleware": "2.16.1",
     "yargs": "6.6.0"
