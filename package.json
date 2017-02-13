@@ -51,7 +51,7 @@
     "babel-preset-latest": "6.16.0",
     "babel-preset-react": "6.16.0",
     "babel-preset-stage-0": "6.16.0",
-    "body-parser": "1.16.0",
+    "body-parser": "1.16.1",
     "commander": "2.9.0",
     "connect": "3.5.1",
     "conventional-changelog-cli": "1.2.0",
