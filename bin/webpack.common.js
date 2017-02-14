@@ -19,6 +19,8 @@ const PATH = {
   libMin: path.resolve(CWD, 'src/static/js/lib/lib.min.js'),
 }
 
+const gonConfig = require('./config').dev
+
 function getEntries(config) {
   const map = {}
   // webpack.dev.js LN 27 name 需要
@@ -32,7 +34,7 @@ function getEntries(config) {
   const entryMap = fileList.reduce((prev, cur) => {
     const name = path.basename(cur, path.extname(cur))
     const newPrev = prev
-    if (process.env.NODE_ENV === 'production') {
+    if (process.env.NODE_ENV === 'production' || !gonConfig.enableHMR) {
       newPrev[name] = cur
     } else {
       newPrev[name] = ['react-hot-loader/patch.js', hotMiddlewareScript, cur]

@@ -65,6 +65,7 @@ const config = {
       react: 'React',
       'react-dom': 'ReactDOM',
     },
+    enableHMR: custom.enableHMR === undefined ? true : custom.enableHMR,
   },
 }
 
