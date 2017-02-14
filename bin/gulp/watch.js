@@ -11,7 +11,9 @@ function empty() {
 }
 
 function imgWatch(done) {
-  gulp.watch(`${config.src.img}/**/*.+(png|gif|jpg|eot|woff|ttf|svg|ico)`, image)
+  // 这种写法，如果放入的图片在文件夹内，则不会触发 watch
+  // gulp.watch(`${config.src.img}/**/*.+(png|gif|jpg|eot|woff|ttf|svg|ico)`, image)
+  gulp.watch(`${config.src.img}/**`, image)
   done()
 }
 

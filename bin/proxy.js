@@ -228,7 +228,6 @@ module.exports.start = function (port) {
   const compiler = webpack(webpackConfig)
 
   dev.use(webpackMiddleware(compiler, {
-    hot: true,
     watchOptions: {
       aggregateTimeout: 100,
       poll: true,
