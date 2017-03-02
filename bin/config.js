@@ -44,7 +44,6 @@ const config = {
     domain: custom.domain || 'gon.com',
     f2e: (custom.fe && custom.fe.local) || '127.0.0.1:8000',
     api: (custom.be && custom.be.dev) || '127.0.0.1:8000',
-    port: custom.port || 8000,
     fe: {
       local: (custom.fe && custom.fe.local) || '127.0.0.1:8000',
       dev: (custom.fe && custom.fe.dev) || '',
@@ -66,12 +65,14 @@ const config = {
       'react-dom': 'ReactDOM',
     },
     enableHMR: custom.enableHMR === undefined ? true : custom.enableHMR,
-    env: custom.env || {
+    env: Object.assign({
       NODE_ENV: 'development',
       NODE_PORT: 8000,
-    },
+    }, custom.env || {}),
   },
 }
+
+console.log(config.dev.env)
 
 Object.keys(config.asset).map((key) => {
   if (key === 'path') {

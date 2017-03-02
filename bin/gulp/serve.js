@@ -27,4 +27,3 @@ module.exports = exports = function serve(done) {
   })
   done()
 }
-
