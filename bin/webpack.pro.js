@@ -33,18 +33,6 @@ module.exports = [
         path.resolve(CWD, 'node_modules'),
         path.resolve(__dirname, '../node_modules'),
       ],
-      // or webpack cannot resolve these modules
-      // These aliasing is used when trying to resolve a module
-      // alias: {
-      //   'webpack-hot-middleware/client':
-      //   path.resolve(__dirname, '../node_modules/webpack-hot-middleware/client.js'),
-      //   'react-hot-loader/patch':
-      //   path.resolve(__dirname, '../node_modules/react-hot-loader/patch.js'),
-      //   'ansi-html': path.resolve(__dirname, '../node_modules/ansi-html/'),
-      //   'html-entities': path.resolve(__dirname, '../node_modules/html-entities/'),
-      //   'react-proxy': path.resolve(__dirname, '../node_modules/react-proxy/'),
-      //   global: path.resolve(__dirname, '../node_modules/global/'),
-      // },
     },
   },
   {
@@ -85,15 +73,12 @@ module.exports = [
         },
         {
           test: /\.styl$/,
-          use: [
-            ExtractTextPlugin.extract(''),
-            {
-              loader: 'css-loader',
-            },
-            {
-              loader: 'stylus-loader',
-            },
-          ],
+          use: ExtractTextPlugin.extract({
+            use: [
+              'css-loader',
+              'stylus-loader',
+            ],
+          }),
         },
       ],
     },

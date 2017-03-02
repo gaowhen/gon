@@ -72,8 +72,6 @@ const config = {
   },
 }
 
-console.log(config.dev.env)
-
 Object.keys(config.asset).map((key) => {
   if (key === 'path') {
     config.asset[key] = getPath(config.asset[key])
