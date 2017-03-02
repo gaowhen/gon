@@ -55,7 +55,7 @@
     "commander": "2.9.0",
     "connect": "3.6.0",
     "conventional-changelog-cli": "1.2.0",
-    "css-loader": "0.26.1",
+    "css-loader": "0.26.2",
     "cz-conventional-changelog": "2.0.0",
     "del": "2.2.2",
     "eslint": "3.16.0",
