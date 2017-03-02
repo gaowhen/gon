@@ -66,6 +66,10 @@ const config = {
       'react-dom': 'ReactDOM',
     },
     enableHMR: custom.enableHMR === undefined ? true : custom.enableHMR,
+    env: custom.env || {
+      NODE_ENV: 'development',
+      NODE_PORT: 8000,
+    },
   },
 }
 

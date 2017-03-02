@@ -57,19 +57,6 @@ https.get('https://raw.githubusercontent.com/gaowhen/gon/master/package.json', (
   })
 })
 
-// exec('npm view Gon version', (error, remoteVersion) => {
-//   exec('Gon -v', (error, localVersion) => {
-//     if (remoteVersion.replace(/\./g, '') > localVersion.replace(/\./g, '')) {
-//       notifier.notify({
-//         title: 'Gon',
-//         message: `New version available: ${remoteVersion} `,
-//         open: 'http://npmjs.com/package/Gon',
-//         contentImage: path.resolve(__dirname, '../doc/logo.png'),
-//       })
-//     }
-//   })
-// })
-
 module.exports = {
   create(appname) {
     if (!appname || !appname.length) {
