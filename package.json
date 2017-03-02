@@ -63,7 +63,7 @@
     "eslint-plugin-import": "2.2.0",
     "eslint-plugin-jsx-a11y": "3.0.2",
     "eslint-plugin-react": "6.10.0",
-    "extract-text-webpack-plugin": "2.0.0-beta.4",
+    "extract-text-webpack-plugin": "2.0.0",
     "figlet": "1.2.0",
     "ghooks": "2.0.0",
     "globby": "6.1.0",
