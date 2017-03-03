@@ -1,6 +1,6 @@
 {
   "name": "Gon",
-  "version": "0.21.0",
+  "version": "0.21.1",
   "description": "Not meer another f2e build tool",
   "private": false,
   "keywords": [
@@ -60,9 +60,9 @@
     "cz-conventional-changelog": "2.0.0",
     "del": "2.2.2",
     "eslint": "3.16.1",
-    "eslint-config-airbnb": "14.0.0",
+    "eslint-config-airbnb": "14.1.0",
     "eslint-plugin-import": "2.2.0",
-    "eslint-plugin-jsx-a11y": "3.0.2",
+    "eslint-plugin-jsx-a11y": "4.0.0",
     "eslint-plugin-react": "6.10.0",
     "extract-text-webpack-plugin": "2.0.0",
     "figlet": "1.2.0",
@@ -96,5 +96,12 @@
     "webpack-dev-middleware": "1.10.1",
     "webpack-hot-middleware": "2.17.1",
     "yargs": "6.6.0"
+  },
+  "devDependencies": {
+    "eslint": "3.16.1",
+    "eslint-config-airbnb": "14.1.0",
+    "eslint-plugin-import": "2.2.0",
+    "eslint-plugin-jsx-a11y": "4.0.0",
+    "eslint-plugin-react": "6.10.0"
   }
 }
