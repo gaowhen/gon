@@ -9,6 +9,7 @@ const gonConfig = require('./config')
 
 const PATH = config.PATH
 const CWD = process.cwd()
+process.traceDeprecation = true
 
 module.exports = [
   {
