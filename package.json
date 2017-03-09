@@ -80,7 +80,7 @@
     "gulp-rev": "7.1.2",
     "gulp-sourcemaps": "2.4.1",
     "gulp-stylus": "2.6.0",
-    "gulp-uglify": "2.0.1",
+    "gulp-uglify": "2.1.0",
     "marked": "0.3.6",
     "morgan": "1.8.1",
     "node-notifier": "5.0.1",
