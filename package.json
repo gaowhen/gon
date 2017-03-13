@@ -30,9 +30,9 @@
     "gon": "bin/index.js"
   },
   "scripts": {
-    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
-    "pre-commit": "./.pre-commit",
-    "commit-msg": "./.commit-msg.js"
+    "precommit": "./.pre-commit",
+    "commitmsg": "./.commit-msg.js",
+    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0"
   },
   "config": {
     "commitizen": {
