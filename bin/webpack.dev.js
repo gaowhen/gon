@@ -63,6 +63,9 @@ module.exports = [
                 presets: [
                   [require.resolve('babel-preset-env'), { modules: false }],
                   require.resolve('babel-preset-react'),
+                  // include object rest spread in stage-3
+                  // and transform-class-properties in stage-2
+                  require.resolve('babel-preset-stage-0'),
                 ],
                 plugins: [
                   [
