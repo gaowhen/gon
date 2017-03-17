@@ -2,9 +2,16 @@
   "name": "gon",
   "version": "0.1.0",
   "scripts": {
-    "precommit": "./.pre-commit",
+    "lint-staged": "lint-staged",
+    "precommit": "lint-staged",
     "commitmsg": "./.commit-msg.js",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0"
+  },
+  "lint-staged": {
+    "*.js": [
+      "eslint",
+      "git add"
+    ]
   },
   "config": {
     "commitizen": {
@@ -36,9 +43,8 @@
     "eslint-plugin-import": "1.16.0",
     "eslint-plugin-jsx-a11y": "2.2.3",
     "eslint-plugin-react": "6.4.1",
-    "gulp": "3.9.1",
-    "gulp-eslint": "3.0.1",
     "husky": "0.13.2",
+    "lint-staged": "3.4.0",
     "yargs": "6.5.0"
   }
 }
