@@ -9,7 +9,6 @@ const gonConfig = require('./config')
 
 const PATH = config.PATH
 const CWD = process.cwd()
-process.traceDeprecation = true
 
 module.exports = [
   {
@@ -63,7 +62,7 @@ module.exports = [
               loader: 'babel-loader',
               options: {
                 presets: [
-                  [require.resolve('babel-preset-es2015'), { modules: false }],
+                  [require.resolve('babel-preset-env'), { modules: false }],
                   require.resolve('babel-preset-react'),
                   require.resolve('babel-preset-stage-0'),
                 ],

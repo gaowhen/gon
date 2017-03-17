@@ -61,11 +61,10 @@ module.exports = [
               options: {
                 cacheDirectory: path.resolve(__dirname, 'tmp/'),
                 presets: [
-                  // ['es2015', { modules: false }],
-                  // 'react',
-                  // 'stage-0',
-                  [require.resolve('babel-preset-es2015'), { modules: false }],
+                  [require.resolve('babel-preset-env'), { modules: false }],
                   require.resolve('babel-preset-react'),
+                  // include object rest spread in stage-3
+                  // and transform-class-properties in stage-2
                   require.resolve('babel-preset-stage-0'),
                 ],
                 plugins: [
