@@ -87,7 +87,7 @@
     "husky": "0.13.2",
     "lint-staged": "3.4.0",
     "marked": "0.3.6",
-    "morgan": "1.8.1",
+    "morgan": "1.8.2",
     "node-notifier": "5.0.1",
     "nodemon": "1.11.0",
     "pug": "2.0.0-beta9",
