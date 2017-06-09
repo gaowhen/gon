@@ -62,7 +62,7 @@
     "conventional-changelog-cli": "1.2.0",
     "css-loader": "0.26.2",
     "cz-conventional-changelog": "2.0.0",
-    "del": "2.2.2",
+    "del": "3.0.0",
     "eslint": "3.16.1",
     "eslint-config-airbnb": "14.1.0",
     "eslint-plugin-import": "2.2.0",
