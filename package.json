@@ -84,7 +84,7 @@
     "gulp-sourcemaps": "2.4.1",
     "gulp-stylus": "2.6.0",
     "gulp-uglify": "2.0.1",
-    "husky": "0.13.2",
+    "husky": "0.13.3",
     "lint-staged": "3.4.0",
     "marked": "0.3.6",
     "morgan": "1.8.1",
