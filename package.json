@@ -92,7 +92,7 @@
     "nodemon": "1.11.0",
     "pug": "2.0.0-beta9",
     "react-hot-loader": "3.0.0-beta.6",
-    "shelljs": "0.7.5",
+    "shelljs": "0.7.7",
     "string-replace-webpack-plugin": "0.0.5",
     "style-loader": "0.13.2",
     "stylus-loader": "2.5.0",
