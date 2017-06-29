@@ -239,6 +239,7 @@ module.exports.start = function (port) {
       chunks: false,
       errorDetails: true,
       cached: true,
+      modules: false,
     },
     historyApiFallback: true,
   }))
