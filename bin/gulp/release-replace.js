@@ -10,7 +10,7 @@ function replaceFunc(match, p1) {
   
   // FIX
   if (!manifest[p1]) {
-    return '/static/build/' + p1
+    return '/static/build/' + p1 + +'?t=' + Date.now()
   }
 
   return global.DIST_DIR + manifest[p1]
