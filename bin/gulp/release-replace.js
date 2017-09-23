@@ -7,6 +7,11 @@ function replaceFunc(match, p1) {
   /* eslint-disable */
   const manifest = require(`${config.path}/rev-manifest.json`)
   /* eslint-disable */
+  
+  // FIX
+  if (!manifest[p1]) {
+    return '/static/build/' + p1
+  }
 
   return global.DIST_DIR + manifest[p1]
 }
