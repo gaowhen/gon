@@ -53,7 +53,7 @@ const config = {
     be: {
       dev: (custom.be && custom.be.dev) || '127.0.0.1:8000',
       pre: (custom.be && custom.be.pre) || '',
-      pro: (custom.be && custom.be.dev) || '',
+      pro: (custom.be && custom.be.pro) || '',
     },
     proxy: custom.proxy || {
       '/data/sk/101010100.html': 'www.weather.com.cn:80',
