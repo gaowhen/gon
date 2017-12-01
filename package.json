@@ -86,7 +86,7 @@
     "gulp-uglify": "2.0.1",
     "husky": "0.14.1",
     "lint-staged": "4.0.0",
-    "marked": "0.3.6",
+    "marked": "0.3.7",
     "morgan": "1.8.1",
     "node-notifier": "5.0.1",
     "nodemon": "1.11.0",
