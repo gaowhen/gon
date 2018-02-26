@@ -95,7 +95,7 @@
     "shelljs": "0.7.5",
     "string-replace-webpack-plugin": "0.0.5",
     "style-loader": "0.13.2",
-    "stylus-loader": "2.5.0",
+    "stylus-loader": "3.0.2",
     "webpack": "3.0.0",
     "webpack-bundle-analyzer": "2.3.0",
     "webpack-dev-middleware": "1.11.0",
